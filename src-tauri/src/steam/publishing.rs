@@ -516,6 +516,43 @@ pub fn publish_icon(icon_path: PathBuf, upscale: bool, addon_id: PublishedFileId
 	id
 }
 
+const DEFAULT_GMA_FILE_NAME: &str = "publishedaddon";
+const GMA_FILE_NAME_MAX_CHARS: usize = 120;
+
+/// Turns an arbitrary string into a file name that is safe on every supported platform.
+/// Returns None when nothing usable is left, so that callers can fall back to another name.
+fn sanitize_gma_file_name(name: &str) -> Option<String> {
+	let sanitized: String = name
+		.trim()
+		.chars()
+		.filter(|c| !c.is_control() && !matches!(c, '/' | '\\' | ':' | '*' | '?' | '"' | '<' | '>' | '|'))
+		.take(GMA_FILE_NAME_MAX_CHARS)
+		.collect();
+
+	// Windows rejects file names that end in a dot or a space
+	let sanitized = sanitized.trim().trim_end_matches('.').trim_end();
+
+	if sanitized.is_empty() {
+		None
+	} else {
+		Some(sanitized.to_owned())
+	}
+}
+
+/// Chooses the name of the .GMA file that gets packed and uploaded.
+/// The chosen name wins, otherwise "publishedaddon.gma" is used.
+fn resolve_gma_file_name(gma_name: Option<&str>) -> String {
+	let mut file_name = gma_name
+		.and_then(sanitize_gma_file_name)
+		.unwrap_or_else(|| DEFAULT_GMA_FILE_NAME.to_owned());
+
+	if !file_name.to_ascii_lowercase().ends_with(".gma") {
+		file_name.push_str(".gma");
+	}
+
+	file_name
+}
+
 #[tauri::command]
 pub fn publish(
 	content_path_src: PathBuf,
@@ -526,6 +563,7 @@ pub fn publish(
 	upscale: bool,
 	update_id: Option<PublishedFileId>,
 	changes: Option<String>,
+	gma_name: Option<String>,
 ) -> u32 {
 	let transaction = transaction!();
 	let id = transaction.id;
@@ -565,7 +603,7 @@ pub fn publish(
 			return;
 		}
 
-		path.push("gmpublisher.gma");
+		path.push(resolve_gma_file_name(gma_name.as_deref()));
 
 		{
 			let gma = GMAFile {

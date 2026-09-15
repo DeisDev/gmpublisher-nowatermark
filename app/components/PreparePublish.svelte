@@ -38,6 +38,8 @@
 	let titleInput;
 	let addonTypeInput;
 	let changeLog;
+	let gmaNameInput;
+	let gmaNameTouched = false;
 
 	let upscale;
 	let canUpscale = false;
@@ -120,6 +122,34 @@
 		}
 	}
 
+	// Keeps the suggested .gma name in the same shape the backend accepts
+	function gmaNameFromTitle(title) {
+		return title
+			.replace(/[\/\\:*?"<>|]/g, '')
+			.replace(/\s+/g, ' ')
+			.trim()
+			.replace(/\.+$/, '')
+			.trim();
+	}
+
+	function onTitleChanged() {
+		if (!gmaNameTouched && gmaNameInput) {
+			gmaNameInput.value = gmaNameFromTitle(titleInput.value);
+		}
+		checkForm();
+	}
+
+	function onGmaNameInput() {
+		// Stop following the title once the user has typed their own name.
+		// Clearing the field falls back to "publishedaddon.gma".
+		gmaNameTouched = true;
+	}
+
+	function trackAddonTitle(title) {
+		gmaNameTouched = false;
+		if (gmaNameInput) gmaNameInput.value = gmaNameFromTitle(title ?? '');
+	}
+
 	let tagChoiceContainer;
 	let chosenAddonTags = [null, null, null];
 	const addonTags = ['fun', 'roleplay', 'scenic', 'movie', 'realism', 'cartoon', 'water', 'comic', 'build'];
@@ -183,6 +213,8 @@
 			title: titleInput.value.trim(),
 			tags: chosenAddonTags.filter(tag => !!tag),
 			addonType: addonTypeInput.value,
+
+			gmaName: gmaNameInput.value.trim(),
 
 			iconPath: gmaIconPath,
 			upscale: canUpscale && upscale.checked,
@@ -264,6 +296,7 @@
 			pathValue = '';
 			pathFailMessage = null;
 			chosenAddonTags = [null, null, null];
+			trackAddonTitle('');
 			return;
 		}
 
@@ -307,6 +340,8 @@
 
 		titleInput.value = updatingAddon.title;
 		titleInput = titleInput;
+
+		trackAddonTitle(updatingAddon.title);
 
 		checkForm(false);
 	}));
@@ -395,8 +430,13 @@
 		</div>
 
 		<span use:tippy={$updatingAddon ? $_('update_addon_title_via_steam') : null}>
-			<input type="text" id="title" placeholder={$_('addon_title')} disabled={$updatingAddon} bind:this={titleInput} on:input={checkForm} on:change={checkForm}/>
+			<input type="text" id="title" placeholder={$_('addon_title')} disabled={$updatingAddon} bind:this={titleInput} on:input={onTitleChanged} on:change={onTitleChanged}/>
 		</span>
+
+		<div class="path-container" id="gma-name-container" use:tippy={$_('gma_file_name_tip')}>
+			<input type="text" id="gma-name" placeholder={$_('gma_file_name_placeholder')} bind:this={gmaNameInput} on:input={onGmaNameInput}/>
+			<div class="extension">.gma</div>
+		</div>
 
 		<select id="addon-type" bind:this={addonTypeInput} on:blur={checkForm} on:change={checkForm}>
 			<option value="default" selected hidden disabled>{$_('addon_type')}</option>
@@ -548,6 +588,14 @@
 	}
 	.path-container > input {
 		flex: 1;
+	}
+	#gma-name-container > .extension {
+		display: flex;
+		align-items: center;
+		margin-left: .75rem;
+		padding: .7rem;
+		font-size: .85em;
+		opacity: .6;
 	}
 	.browse {
 		margin-left: .75rem;

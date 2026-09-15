@@ -189,6 +189,8 @@
 	"icon_instructions": "Accepted Formats: JPG, PNG, GIF\nMax Size: 1 MB\nRecommended: 512x512",
 	"addon_title": "Title...",
 	"addon_path": "Addon Path...",
+	"gma_file_name_placeholder": "publishedaddon",
+	"gma_file_name_tip": "The name of the .gma file. Follows the addon title unless you change it; leave it empty to use publishedaddon.gma.",
 	"icon_file_pick": "Workshop Icon",
 	"remove_icon": "Remove Icon",
 	"update_addon_title_via_steam": "Once published, you can update your addon's title on its Workshop page.",
