@@ -1,20 +1,20 @@
-# Maintainer: Lythium <max@lythium.dev>
+# Based on the gmpublisher-bin PKGBUILD by Lythium <max@lythium.dev>
 
-pkgname=gmpublisher-bin
-_realname=gmpublisher
+pkgname=nwmpublisher-bin
+_realname=nwmpublisher
 pkgver=2.12.2
 pkgrel=2
 pkgdesc="Workshop Publishing Utility for Garry's Mod, written in Rust & Svelte and powered by Tauri"
 arch=('x86_64')
-url="https://github.com/WilliamVenner/gmpublisher"
+url="https://github.com/DeisDev/nwmpublisher"
 license=('GPL-3.0')
 depends=('webkit2gtk-4.1' 'libsoup' 'hicolor-icon-theme' 'libappindicator-gtk3' 'gst-plugins-good' 'gst-plugins-bad' 'gst-libav')
 makedepends=('unzip')
 provides=("${_realname}")
 conflicts=("${_realname}")
-source=("${_realname}_linux64.zip::https://github.com/WilliamVenner/${_realname}/releases/download/${pkgver}/${_realname}_linux64.zip"
-        "LICENSE::https://raw.githubusercontent.com/WilliamVenner/${_realname}/${pkgver}/LICENSE"
-        "${_realname}.png::https://raw.githubusercontent.com/WilliamVenner/${_realname}/${pkgver}/src-tauri/icons/128x128.png")
+source=("${_realname}_linux64.zip::https://github.com/DeisDev/nwmpublisher/releases/download/${pkgver}/${_realname}_linux64.zip"
+        "LICENSE::https://raw.githubusercontent.com/DeisDev/nwmpublisher/${pkgver}/LICENSE"
+        "${_realname}.png::https://raw.githubusercontent.com/DeisDev/nwmpublisher/${pkgver}/src-tauri/icons/128x128.png")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP')
@@ -41,7 +41,7 @@ EOF
   install -d "$pkgdir/usr/share/applications"
   cat << EOF > "$pkgdir/usr/share/applications/${_realname}.desktop"
 [Desktop Entry]
-Name=gmpublisher
+Name=nwmpublisher
 Comment=${pkgdesc}
 Exec=${_realname}
 Icon=${_realname}

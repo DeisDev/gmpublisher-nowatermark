@@ -43,7 +43,7 @@ window.updateCustomColor = function(name, colorInt) {
 	root.style.setProperty(varName + '-l', (l * 100) + '%');
 }
 
-__GMPUBLISHER__(() => {
+__NWMPUBLISHER__(() => {
 	if (AppSettings.language) switchLanguage(AppSettings.language);
 
 	updateCustomColor('neutral', AppSettings.color_neutral);

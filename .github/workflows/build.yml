@@ -41,19 +41,19 @@ jobs:
         cd src-tauri/target/release
 
         for lib in libwebkit2gtk-* libjavascriptcoregtk-*; do
-          for path in $(ldd gmpublisher | awk '{print $3}' | grep "$lib"); do
+          for path in $(ldd nwmpublisher | awk '{print $3}' | grep "$lib"); do
             cp -v "$path" .
           done
         done
 
-        patchelf --set-rpath '$ORIGIN' gmpublisher
+        patchelf --set-rpath '$ORIGIN' nwmpublisher
 
-        zip -r gmpublisher_linux64.zip gmpublisher libsteam_api.so libwebkit2gtk-* libjavascriptcoregtk-*
+        zip -r nwmpublisher_linux64.zip nwmpublisher libsteam_api.so libwebkit2gtk-* libjavascriptcoregtk-*
 
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        files: src-tauri/target/release/gmpublisher_linux64.zip
+        files: src-tauri/target/release/nwmpublisher_linux64.zip
         fail_on_unmatched_files: true
 
   build_windows:
@@ -73,7 +73,7 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        files: src-tauri/target/release/bundle/msi/gmpublisher_*.msi
+        files: src-tauri/target/release/bundle/msi/nwmpublisher_*.msi
         fail_on_unmatched_files: true
 
   build_macos:
@@ -99,17 +99,17 @@ jobs:
       run: npm run tauri build -- --target universal-apple-darwin -v
 
     - name: Copy Steamworks SDK to bundle
-      run: cp src-tauri/lib/steam_api/redistributable_bin/osx/libsteam_api.dylib src-tauri/target/universal-apple-darwin/release/bundle/macos/gmpublisher.app/Contents/MacOS/libsteam_api.dylib
+      run: cp src-tauri/lib/steam_api/redistributable_bin/osx/libsteam_api.dylib src-tauri/target/universal-apple-darwin/release/bundle/macos/nwmpublisher.app/Contents/MacOS/libsteam_api.dylib
 
     - name: Prepare ZIP
       run: |
         cd src-tauri/target/universal-apple-darwin/release/bundle/macos
-        zip -r gmpublisher_macOS.app.zip gmpublisher.app
+        zip -r nwmpublisher_macOS.app.zip nwmpublisher.app
 
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
-        files: src-tauri/target/universal-apple-darwin/release/bundle/macos/gmpublisher_macOS.app.zip
+        files: src-tauri/target/universal-apple-darwin/release/bundle/macos/nwmpublisher_macOS.app.zip
         fail_on_unmatched_files: true
 
   aur_publish:
@@ -138,7 +138,7 @@ jobs:
       - name: Publish AUR Package
         uses: KSXGitHub/github-actions-deploy-aur@v4.1.1
         with:
-          pkgname: gmpublisher-bin
+          pkgname: nwmpublisher-bin
           pkgbuild: ./PKGBUILD
           commit_username: ${{ secrets.AUR_USERNAME }}
           commit_email: ${{ secrets.AUR_EMAIL }}

@@ -142,7 +142,7 @@
 			"recycle": "Reciclar",
 			"delete": "Eliminar",
 			"overwrite": "Sobrescribir",
-			"tooltip": "¿Al extraer GMAs, qué debe de hacer gmpublisher si el directorio de extracción de GMAs ya existe (el GMA ya ha sido extraido anteriormente)?"
+			"tooltip": "¿Al extraer GMAs, qué debe de hacer nwmpublisher si el directorio de extracción de GMAs ya existe (el GMA ya ha sido extraido anteriormente)?"
 		},
 
 		"accessibility": {
@@ -179,7 +179,7 @@
 	"ERR_DOWNLOAD_FAILED": "Descarga Fallida",
 	"ERR_ITEM_NOT_FOUND": "Elemento no encontrado",
 	"ERR_ITEM_INACCESSIBLE": "Elemento inaccesible",
-	"ERR_INVALID_CONTENT_PATH": "Esta ruta de contenido no existe, no es un directorio o gmpublisher no tiene permisos suficientes para accesarlo",
+	"ERR_INVALID_CONTENT_PATH": "Esta ruta de contenido no existe, no es un directorio o nwmpublisher no tiene permisos suficientes para accesarlo",
 	"ERR_MULTIPLE_GMAS": "Multiples archivos GMA encontrados en esta ruta de contenido",
 	"ERR_IMAGE_ERROR": "Error de Imagen: {data}",
 	"ERR_DUPLICATE_ENTRIES": "Hay una entrada duplicada ({data}) en esta ruta de contenido. Todas las rutas deben ser únicas y con letras minúsculas.",
@@ -250,8 +250,8 @@
 	"update_available": "¡Nueva actualización disponible!\n{version}",
 	"workshop_page": "Página de Workshop",
 	"steam_workshop": "Steam Workshop",
-	"open_count": "¡Has abierto gmpublisher {count} veces! ¡Felicidades!",
-	"enjoying_gmpublisher": "¿Estás disfrutando gmpublisher?",
+	"open_count": "¡Has abierto nwmpublisher {count} veces! ¡Felicidades!",
+	"enjoying_nwmpublisher": "¿Estás disfrutando nwmpublisher?",
 	"github_star_plz_i_need_a_job_maybe": "Si tú tienes una cuenta de GitHub, considera poniendo un estrella en el %Repositorio de GitHub% si mi trabajo te ayudó",
 	"vscode_glua_enhanced": "Si eres un desarrollador, a lo mejor estarás interesado en mí %VSCode GLua Enhanced% extensión.",
 

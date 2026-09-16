@@ -142,7 +142,7 @@
 			"recycle": "Поместить в корзину",
 			"delete": "Удалить",
 			"overwrite": "Заменить",
-			"tooltip": "Что должен делать gmpublisher при извлечении GMA, если каталог извлечения GMA уже существует (GMA уже был извлечён ранее)?"
+			"tooltip": "Что должен делать nwmpublisher при извлечении GMA, если каталог извлечения GMA уже существует (GMA уже был извлечён ранее)?"
 		},
 
 		"accessibility": {
@@ -179,7 +179,7 @@
 	"ERR_DOWNLOAD_FAILED": "Скачивание не удалось",
 	"ERR_ITEM_NOT_FOUND": "Элемент не найден",
 	"ERR_ITEM_INACCESSIBLE": "Элемент недоступен",
-	"ERR_INVALID_CONTENT_PATH": "Данный путь к содержимому не существует, не является каталогом или у gmpublisher недостаточно прав для доступа к нему",
+	"ERR_INVALID_CONTENT_PATH": "Данный путь к содержимому не существует, не является каталогом или у nwmpublisher недостаточно прав для доступа к нему",
 	"ERR_MULTIPLE_GMAS": "В этом пути к содержимому найдено несколько файлов GMA",
 	"ERR_IMAGE_ERROR": "Ошибка изображения: {data}",
 	"ERR_DUPLICATE_ENTRIES": "В этом пути содержимого есть дублирующая запись ({data}). Все пути должны быть уникальными и со строчной буквы. Кста, я использую arch",
@@ -251,8 +251,8 @@
 	"update_available": "Доступно новое обновление!\n{version}",
 	"workshop_page": "Страница в мастерской",
 	"steam_workshop": "Мастерская Steam",
-	"open_count": "Вы открыли gmpublisher {count} раз(а)! Поздравляем!",
-	"enjoying_gmpublisher": "Нравится gmpublisher?",
+	"open_count": "Вы открыли nwmpublisher {count} раз(а)! Поздравляем!",
+	"enjoying_nwmpublisher": "Нравится nwmpublisher?",
 	"github_star_plz_i_need_a_job_maybe": "Если у вас есть аккаунт на GitHub, то поставьте звёздочку на моём %репозитории на GitHub%, если моя работа помогла вам :D",
 	"vscode_glua_enhanced": "Если вы разработчик, вас также может заинтересовать моё расширение %VSCode GLua Enhanced%.",
 

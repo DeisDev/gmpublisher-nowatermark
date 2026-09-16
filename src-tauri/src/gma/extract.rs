@@ -342,7 +342,7 @@ impl ExtractGMAImmut for GMAFile {
 		handle: Option<GMAReader>,
 	) -> Result<PathBuf, GMAError> {
 		let mut base = app_data!().temp_dir().to_owned();
-		base.push("gmpublisher");
+		base.push("nwmpublisher");
 		base.push(&self.extracted_name);
 
 		let mut path = base.clone();

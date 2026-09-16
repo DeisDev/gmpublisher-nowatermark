@@ -7,14 +7,15 @@
 		"withGlobalTauri": true
 	},
 	"package": {
-		"productName": "gmpublisher",
+		"productName": "nwmpublisher",
 		"version": "2.12.2"
 	},
 	"tauri": {
 		"bundle": {
 			"active": true,
 			"targets": ["msi", "app"],
-			"identifier": "venner.gmpublisher",
+			"identifier": "nwmpublisher",
+			"publisher": "DeisDev",
 			"icon": [
 				"icons/32x32.png",
 				"icons/128x128.png",
@@ -23,7 +24,7 @@
 			],
 			"resources": [],
 			"externalBin": [],
-			"copyright": "2021 William Venner",
+			"copyright": "William Venner, DeisDev",
 			"category": "DeveloperTool",
 			"shortDescription": "Garrys Mod Workshop Publishing Utility",
 			"longDescription": "Garrys Mod Workshop Publishing Utility",
@@ -41,8 +42,8 @@
 		},
 		"windows": [
 			{
-				"label": "gmpublisher",
-				"title": "gmpublisher",
+				"label": "nwmpublisher",
+				"title": "nwmpublisher",
 				"width": 800,
 				"height": 600,
 				"minWidth": 800,

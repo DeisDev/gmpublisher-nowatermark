@@ -13,7 +13,7 @@
 	onMount(() => {
 		star.innerText = $_('github_star_plz_i_need_a_job_maybe');
 		star.innerHTML = star.innerHTML.replace(RE_LINKIFY, (_, text) => {
-			return '<a class="color" href="https://github.com/WilliamVenner/gmpublisher" target="_blank">' + text + '</a>';
+			return '<a class="color" href="https://github.com/DeisDev/nwmpublisher" target="_blank">' + text + '</a>';
 		});
 
 		gluaEnhanced.innerText = $_('vscode_glua_enhanced');
@@ -29,7 +29,7 @@
 
 <Modal id="github-star-modal" {active} cancel={pissOff}>
 	<Logo/>
-	<h2>{$_('enjoying_gmpublisher')}<img src="/img/dog.gif"/></h2>
+	<h2>{$_('enjoying_nwmpublisher')}<img src="/img/dog.gif"/></h2>
 	<p><span bind:this={star}>{$_('github_star_plz_i_need_a_job_maybe')}</span><br><span bind:this={gluaEnhanced}>{$_('vscode_glua_enhanced')}</span></p>
 	<div class="btn" on:mousedown={pissOff} on:click={pissOff}>Piss off</div>
 </Modal>

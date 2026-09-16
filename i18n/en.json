@@ -142,7 +142,7 @@
 			"recycle": "Recycle",
 			"delete": "Delete",
 			"overwrite": "Overwrite",
-			"tooltip": "When extracting GMAs, what should gmpublisher do if the GMA's extraction directory already exists (the GMA has already been extracted before)?"
+			"tooltip": "When extracting GMAs, what should nwmpublisher do if the GMA's extraction directory already exists (the GMA has already been extracted before)?"
 		},
 
 		"accessibility": {
@@ -179,7 +179,7 @@
 	"ERR_DOWNLOAD_FAILED": "Download Failed",
 	"ERR_ITEM_NOT_FOUND": "Item Not Found",
 	"ERR_ITEM_INACCESSIBLE": "Item Inaccessible",
-	"ERR_INVALID_CONTENT_PATH": "This content path does not exist, is not a directory or gmpublisher has insufficient permissions to access it",
+	"ERR_INVALID_CONTENT_PATH": "This content path does not exist, is not a directory or nwmpublisher has insufficient permissions to access it",
 	"ERR_MULTIPLE_GMAS": "Multiple GMA files found in this content path",
 	"ERR_IMAGE_ERROR": "Image Error: {data}",
 	"ERR_DUPLICATE_ENTRIES": "There is a duplicate entry ({data}) in this content path. All paths must be unique & lowercase. i use arch btw",
@@ -254,8 +254,12 @@
 	"update_available": "New Update Available!\n{version}",
 	"workshop_page": "Workshop Page",
 	"steam_workshop": "Steam Workshop",
-	"open_count": "You've opened gmpublisher {count} times! Congratulations!",
-	"enjoying_gmpublisher": "Enjoying gmpublisher?",
+	"migrate_settings_title": "Import your gmpublisher settings?",
+	"migrate_settings_body": "An older gmpublisher installation was found on this computer.\nImport its settings (destinations, local addon paths and preferences) into nwmpublisher?",
+	"migrate_settings_import": "Import and Restart",
+	"migrate_settings_fresh": "Start Fresh",
+	"open_count": "You've opened nwmpublisher {count} times! Congratulations!",
+	"enjoying_nwmpublisher": "Enjoying nwmpublisher?",
 	"github_star_plz_i_need_a_job_maybe": "If you have a GitHub account, consider dropping a star on the %GitHub repository% if my work helped you :D",
 	"vscode_glua_enhanced": "If you're a developer, you may also be interested in my %VSCode GLua Enhanced% extension.",
 

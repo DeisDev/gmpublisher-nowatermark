@@ -1,6 +1,4 @@
-window.__GMPUBLISHER__ = appDataCallback => {
-	__TAURI__.tauri.invoke('reloaded');
-
+window.__NWMPUBLISHER__ = appDataCallback => {
 	// TODO
 	/*{
 		__TAURI__.event.listen('tauri://file-drop', ({ payload: path }) => {
@@ -52,6 +50,10 @@ window.__GMPUBLISHER__ = appDataCallback => {
 
 		updateAppData(JSON.parse('{$_APP_DATA_$}'));
 		__TAURI__.event.listen('UpdateAppData', ({ payload }) => updateAppData(payload));
+
+		// After the listener is registered, so that the app data the backend sends back in
+		// response to a reload is not missed
+		__TAURI__.tauri.invoke('reloaded');
 	}
 };
 

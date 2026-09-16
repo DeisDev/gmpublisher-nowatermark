@@ -184,5 +184,9 @@ static mut RELOADED: AtomicBool = AtomicBool::new(false);
 pub fn reloaded() {
 	if unsafe { RELOADED.fetch_or(true, std::sync::atomic::Ordering::SeqCst) } {
 		crate::commands::free_caches();
+
+		// The webview was served the app data captured when it first loaded, so hand it
+		// the current data instead
+		app_data!().send();
 	}
 }

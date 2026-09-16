@@ -116,8 +116,8 @@ impl TransactionServer {
 		loop {
 			dprintln!("WebSocket: Waiting for client on {:?}", socket.local_addr().unwrap());
 			if let Ok(connection) = socket.accept() {
-				if connection.protocols().contains(&"gmpublisher".to_string()) {
-					if let Ok(client) = connection.use_protocol("gmpublisher").accept() {
+				if connection.protocols().contains(&"nwmpublisher".to_string()) {
+					if let Ok(client) = connection.use_protocol("nwmpublisher").accept() {
 						dprintln!("WebSocket: Connection Established with {:#?}", client.peer_addr().unwrap());
 						TransactionServer::listen(tx.clone(), &rx, client);
 					}

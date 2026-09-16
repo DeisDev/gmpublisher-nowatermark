@@ -17,6 +17,9 @@ pub fn invoke_handler() -> impl Fn(tauri::Invoke<tauri::Wry>) + Send + Sync + 's
 		crate::appdata::update_settings,
 		crate::appdata::validate_gmod,
 		crate::appdata::window_resized,
+		crate::appdata::legacy_settings_pending,
+		crate::appdata::migrate_legacy_settings,
+		crate::appdata::dismiss_legacy_settings,
 		crate::game_addons::browse_installed_addons,
 		crate::game_addons::get_installed_addon,
 		crate::game_addons::downloader_extract_gmas,
@@ -46,7 +49,7 @@ pub fn invoke_handler() -> impl Fn(tauri::Invoke<tauri::Wry>) + Send + Sync + 's
 		crate::search::full_search,
 	];
 
-	// This weirdness is needed because when gmpublisher was written,
+	// This weirdness is needed because when this app was written,
 	// commands were sent from another thread. This is no longer the case,
 	// and there are many main-thread-not-allowed debug assertions littered
 	// all over the codebase, so we just set up a channel and invoke the commands

@@ -19,7 +19,7 @@ pub(super) fn stdin() -> bool {
 	// Remove the logging::panic() hook
 	let _ = std::panic::take_hook();
 
-	let command = Command::new("gmpublisher");
+	let command = Command::new("nwmpublisher");
 
 	let matches = command
 	.version(env!("CARGO_PKG_VERSION"))

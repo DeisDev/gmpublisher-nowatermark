@@ -1838,54 +1838,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "gmpublisher"
-version = "2.12.2"
-dependencies = [
- "anyhow",
- "atomic_refcell",
- "backtrace",
- "base64 0.13.1",
- "bincode",
- "byteorder",
- "chardetng",
- "chrono",
- "clap",
- "crc32fast",
- "crossbeam",
- "derive_more",
- "dirs 3.0.2",
- "dirs-next",
- "dunce",
- "erased-serde",
- "fork",
- "fuzzy-matcher",
- "image 0.23.14",
- "indexmap 1.9.3",
- "lazy_static",
- "num_cpus",
- "once_cell",
- "opener",
- "parking_lot 0.11.2",
- "path-slash",
- "rayon",
- "regex",
- "serde",
- "serde_json",
- "steamlocate",
- "steamworks",
- "tauri",
- "tauri-build",
- "tauri-utils",
- "thiserror",
- "trash",
- "turbonone",
- "ureq",
- "walkdir",
- "websocket",
- "xz2",
-]
-
-[[package]]
 name = "gobject-sys"
 version = "0.15.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2935,6 +2887,54 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 1.0.109",
+]
+
+[[package]]
+name = "nwmpublisher"
+version = "2.12.2"
+dependencies = [
+ "anyhow",
+ "atomic_refcell",
+ "backtrace",
+ "base64 0.13.1",
+ "bincode",
+ "byteorder",
+ "chardetng",
+ "chrono",
+ "clap",
+ "crc32fast",
+ "crossbeam",
+ "derive_more",
+ "dirs 3.0.2",
+ "dirs-next",
+ "dunce",
+ "erased-serde",
+ "fork",
+ "fuzzy-matcher",
+ "image 0.23.14",
+ "indexmap 1.9.3",
+ "lazy_static",
+ "num_cpus",
+ "once_cell",
+ "opener",
+ "parking_lot 0.11.2",
+ "path-slash",
+ "rayon",
+ "regex",
+ "serde",
+ "serde_json",
+ "steamlocate",
+ "steamworks",
+ "tauri",
+ "tauri-build",
+ "tauri-utils",
+ "thiserror",
+ "trash",
+ "turbonone",
+ "ureq",
+ "walkdir",
+ "websocket",
+ "xz2",
 ]
 
 [[package]]

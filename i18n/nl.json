@@ -142,7 +142,7 @@
 			"recycle": "Recyclen",
 			"delete": "Verwijderen",
 			"overwrite": "Overschrijven",
-			"tooltip": "Wat moet gmpublisher doen als de GMA's uitpakmap al bestaat bij het uitpakken van GMA's (de GMA is eerder uitgepakt)?"
+			"tooltip": "Wat moet nwmpublisher doen als de GMA's uitpakmap al bestaat bij het uitpakken van GMA's (de GMA is eerder uitgepakt)?"
 		},
 
 		"accessibility": {
@@ -179,7 +179,7 @@
 	"ERR_DOWNLOAD_FAILED": "Download gefaald",
 	"ERR_ITEM_NOT_FOUND": "Item Niet Gevonden",
 	"ERR_ITEM_INACCESSIBLE": "Item Ontoegankelijk",
-	"ERR_INVALID_CONTENT_PATH": "Deze content pad bestaat niet, is geen map of gmpublisher heeft geen rechten om het te openen",
+	"ERR_INVALID_CONTENT_PATH": "Deze content pad bestaat niet, is geen map of nwmpublisher heeft geen rechten om het te openen",
 	"ERR_MULTIPLE_GMAS": "Meerdere GMA bestanden gevonden in deze content pad",
 	"ERR_IMAGE_ERROR": "Afbeeldingsfout: {data}",
 	"ERR_DUPLICATE_ENTRIES": "Er is een identiek bestand ({data}) in deze contentpad. Alle paden moeten uniek zijn en in kleine letters. i use arch btw",
@@ -250,8 +250,8 @@
 	"update_available": "Nieuwe Update Beschikbaar!\n{version}",
 	"workshop_page": "Workshop Pagina",
 	"steam_workshop": "Steam Workshop",
-	"open_count": "Je hebt gmpublisher {count} keer geopend! Gefeliciteerd!",
-	"enjoying_gmpublisher": "Blij met gmpublisher?",
+	"open_count": "Je hebt nwmpublisher {count} keer geopend! Gefeliciteerd!",
+	"enjoying_nwmpublisher": "Blij met nwmpublisher?",
 	"github_star_plz_i_need_a_job_maybe": "Als je een GitHub accout hebt, laat alsjeblieft een ster achter bij de %GitHub repository% als mijn werk jou heeft geholpen :D",
 	"vscode_glua_enhanced": "Als je een ontwikkelaar bent, dan ben je misschien ook geïnteresseerd in mijn %VSCode GLua Enhanced% extensie.",
 

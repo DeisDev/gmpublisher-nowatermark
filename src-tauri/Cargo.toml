@@ -1,10 +1,10 @@
 [package]
-name = "gmpublisher"
+name = "nwmpublisher"
 version = "2.12.2"
-description = "gmpublisher"
-authors = ["William Venner <william@venner.io>"]
+description = "nwmpublisher"
+authors = ["DeisDev \"CatSniffer\"", "William Venner <william@venner.io>"]
 license = "GPL-3.0"
-repository = "https://github.com/WilliamVenner/gmpublisher"
+repository = "https://github.com/DeisDev/nwmpublisher"
 edition = "2021"
 publish = false
 

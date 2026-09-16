@@ -238,7 +238,7 @@ invoke('websocket').then(port => {
 		return read_nt_string(byteOffset, view, true);
 	};
 
-	const socket = new WebSocket('ws://localhost:' + port, 'gmpublisher');
+	const socket = new WebSocket('ws://localhost:' + port, 'nwmpublisher');
 	socket.binaryType = 'arraybuffer';
 	socket.addEventListener('message', event => {
         const view = new DataView(event.data);

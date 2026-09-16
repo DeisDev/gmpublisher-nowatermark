@@ -5,6 +5,11 @@
 	import NavSidebar, { pages, activeItem } from './components/NavSidebar.svelte';
 	import GitHubStar from './components/GitHubStar.svelte';
 	import ContextMenuContainer from './components/ContextMenuContainer.svelte';
+	import MigrateSettings from './components/MigrateSettings.svelte';
+	import { invoke } from '@tauri-apps/api/tauri';
+
+	let migrateSettings = false;
+	invoke('legacy_settings_pending').then(pending => migrateSettings = pending);
 </script>
 
 <main>
@@ -30,6 +35,10 @@
 
 	{#if AppData.open_count === 5}
 		<GitHubStar/>
+	{/if}
+
+	{#if migrateSettings}
+		<MigrateSettings bind:active={migrateSettings}/>
 	{/if}
 
 </main>

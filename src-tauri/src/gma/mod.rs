@@ -242,8 +242,8 @@ impl GMAFile {
 				None => match self.path.file_name() {
 					Some(file_name) => file_name.to_string_lossy().to_lowercase(),
 					None => match SystemTime::now().duration_since(SystemTime::UNIX_EPOCH) {
-						Ok(unix) => format!("gmpublisher_extracted_{}", unix.as_secs()),
-						Err(_) => "gmpublisher_extracted".into(),
+						Ok(unix) => format!("nwmpublisher_extracted_{}", unix.as_secs()),
+						Err(_) => "nwmpublisher_extracted".into(),
 					},
 				},
 			};
@@ -290,8 +290,8 @@ impl GMAFile {
 
 		if extracted_name.is_empty() {
 			extracted_name = match SystemTime::now().duration_since(SystemTime::UNIX_EPOCH) {
-				Ok(unix) => format!("gmpublisher_extracted_{}", unix.as_secs()),
-				Err(_) => "gmpublisher_extracted".into(),
+				Ok(unix) => format!("nwmpublisher_extracted_{}", unix.as_secs()),
+				Err(_) => "nwmpublisher_extracted".into(),
 			};
 		}
 

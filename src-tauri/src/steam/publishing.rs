@@ -150,7 +150,7 @@ impl From<WorkshopIcon> for PathBuf {
 					};
 
 					let mut temp_img = app_data!().temp_dir().to_owned();
-					temp_img.push(format!("gmpublisher_upscaled_icon.{}", format_extension));
+					temp_img.push(format!("nwmpublisher_upscaled_icon.{}", format_extension));
 
 					let image = image.resize_exact(512, 512, image::imageops::FilterType::CatmullRom);
 					match image.save_with_format(&temp_img, format) {
@@ -597,7 +597,7 @@ pub fn publish(
 
 		let mut path = app_data!().temp_dir().to_owned();
 		path.pop();
-		path.push("gmpublisher_publishing");
+		path.push("nwmpublisher_publishing");
 
 		if std::fs::create_dir_all(&path).is_err() {
 			transaction.error("ERR_IO_ERROR", turbonone!());

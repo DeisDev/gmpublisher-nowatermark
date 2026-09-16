@@ -21,12 +21,18 @@ use steamworks::PublishedFileId;
 lazy_static! {
 	static ref USER_DATA_DIR: PathBuf = dirs_next::data_dir()
 		.unwrap_or_else(|| std::env::current_exe().unwrap_or_else(|_| std::env::temp_dir()))
-		.join("gmpublisher");
+		.join("nwmpublisher");
 	static ref APP_SETTINGS_PATH: PathBuf = dirs_next::config_dir()
 		.unwrap_or_else(|| dirs_next::data_dir().unwrap_or_else(|| std::env::current_exe().unwrap_or_else(|_| std::env::temp_dir())))
+		.join("nwmpublisher/settings.json");
+	static ref LEGACY_APP_SETTINGS_PATH: PathBuf = dirs_next::config_dir()
+		.unwrap_or_else(|| dirs_next::data_dir().unwrap_or_else(|| std::env::current_exe().unwrap_or_else(|_| std::env::temp_dir())))
 		.join("gmpublisher/settings.json");
-	static ref TEMP_DIR: PathBuf = std::env::temp_dir().join("gmpublisher");
+	static ref TEMP_DIR: PathBuf = std::env::temp_dir().join("nwmpublisher");
 	static ref DOWNLOADS_DIR: Option<PathBuf> = dirs::download_dir();
+	/// Whether nwmpublisher already had settings of its own when it started.
+	/// Evaluated before anything can write settings, so it stays true for the whole run.
+	static ref HAD_SETTINGS_FILE: bool = APP_SETTINGS_PATH.is_file();
 }
 
 #[derive(Debug)]
@@ -132,14 +138,17 @@ impl Default for Settings {
 impl Settings {
 	pub fn init() -> Settings {
 		println!("Initializing Settings...");
-		match Settings::load(false) {
+
+		lazy_static::initialize(&HAD_SETTINGS_FILE);
+
+		match Settings::load(&APP_SETTINGS_PATH, false) {
 			Ok(settings) => settings,
 			Err(_) => Settings::default(),
 		}
 	}
 
-	fn load(sanitize: bool) -> Result<Settings, anyhow::Error> {
-		let contents = fs::read_to_string(&*APP_SETTINGS_PATH)?;
+	fn load(path: &std::path::Path, sanitize: bool) -> Result<Settings, anyhow::Error> {
+		let contents = fs::read_to_string(path)?;
 		let mut settings: Settings = serde_json::de::from_str(&contents)?;
 		if sanitize {
 			settings.sanitize();
@@ -365,6 +374,45 @@ pub fn update_settings(mut settings: Settings) -> bool {
 	true
 }
 
+/// Whether there are settings from an older gmpublisher installation to import.
+/// Only true on a first launch, so the user is never asked twice.
+#[tauri::command]
+pub fn legacy_settings_pending() -> bool {
+	!*HAD_SETTINGS_FILE && LEGACY_APP_SETTINGS_PATH.is_file()
+}
+
+/// Imports the settings left behind by gmpublisher's config directory.
+/// Returns whether there was anything to import.
+#[tauri::command]
+pub fn migrate_legacy_settings() -> bool {
+	let settings = match Settings::load(&LEGACY_APP_SETTINGS_PATH, true) {
+		Ok(settings) => settings,
+		Err(_) => return false,
+	};
+
+	ignore! { settings.save() };
+
+	let rediscover_addons = app_data!().settings.read().gmod != settings.gmod;
+
+	*app_data!().settings.write() = settings;
+
+	if rediscover_addons {
+		game_addons!().refresh();
+		webview_emit!("InstalledAddonsRefreshed");
+	}
+
+	webview_emit!("UpdateAppData", &*crate::APP_DATA);
+
+	true
+}
+
+/// Keeps the settings nwmpublisher is currently using, writing them out so that
+/// the user isn't asked to migrate again on the next launch.
+#[tauri::command]
+pub fn dismiss_legacy_settings() {
+	ignore! { app_data!().settings.read().save() };
+}
+
 #[tauri::command]
 pub fn validate_gmod(mut path: PathBuf) -> bool {
 	path.push("GarrysMod");
@@ -421,7 +469,7 @@ pub fn write_tauri_settings() -> Option<()> {
 	use std::io::{BufReader, BufWriter};
 
 	let mut settings_path = dirs_next::config_dir()?;
-	settings_path.push("gmpublisher");
+	settings_path.push("nwmpublisher");
 
 	fs::create_dir_all(&settings_path).ok()?;
 

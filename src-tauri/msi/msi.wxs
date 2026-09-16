@@ -9,7 +9,7 @@
 <?endif?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="{{{product_name}}}" UpgradeCode="9C296848-ABD3-4538-92D0-3BC4E408F34C" Language="1033" Codepage="1252" Manufacturer="William Venner" Version="{{{version}}}">
+	<Product Id="*" Name="{{{product_name}}}" UpgradeCode="9C296848-ABD3-4538-92D0-3BC4E408F34C" Language="1033" Codepage="1252" Manufacturer="DeisDev" Version="{{{version}}}">
 
 		<Package Id="*" Keywords="Installer" InstallerVersion="450" Languages="1033" Compressed="yes" InstallScope="perMachine" SummaryCodepage="1252"/>
 
@@ -57,31 +57,31 @@
 			-->
 
 			<Component Id="FileTypeAssociationsReg" Guid="968b7fdb-58b9-46d7-86da-76d031acefce">
-				<ProgId Id="gmpublisher.gma.Document" Description="GMA File">
+				<ProgId Id="nwmpublisher.gma.Document" Description="GMA File">
 					<Extension Id="gma" ContentType="application/gma">
 						<Verb Id="open" Command="Open" TargetFile="EXE" Argument="-e &quot;%1&quot;" />
 					</Extension>
 				</ProgId>
 
-				<RegistryValue Root="HKLM" Key="SOFTWARE\gmpublisher\Capabilities" Name="ApplicationDescription" Value="gmpublisher" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\gmpublisher\Capabilities" Name="ApplicationIcon" Value="[INSTALLDIR]gmpublisher,0" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\gmpublisher\Capabilities" Name="ApplicationName" Value="gmpublisher" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\gmpublisher\Capabilities\DefaultIcon" Value="[INSTALLDIR]gmpublisher,1" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\gmpublisher\Capabilities\FileAssociations" Name=".gma" Value="gmpublisher.gma.Document" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\gmpublisher\Capabilities\MIMEAssociations" Name="application/gma" Value="gmpublisher.gma.Document" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\gmpublisher\Capabilities\shell\Open\command" Value="&quot;[INSTALLDIR]gmpublisher&quot; -e &quot;%1&quot;" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities" Name="ApplicationDescription" Value="nwmpublisher" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities" Name="ApplicationIcon" Value="[INSTALLDIR]nwmpublisher,0" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities" Name="ApplicationName" Value="nwmpublisher" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities\DefaultIcon" Value="[INSTALLDIR]nwmpublisher,1" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities\FileAssociations" Name=".gma" Value="nwmpublisher.gma.Document" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities\MIMEAssociations" Name="application/gma" Value="nwmpublisher.gma.Document" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities\shell\Open\command" Value="&quot;[INSTALLDIR]nwmpublisher&quot; -e &quot;%1&quot;" Type="string" />
 
-				<RegistryValue Root="HKLM" Key="SOFTWARE\RegisteredApplications" Name="gmpublisher" Value="SOFTWARE\gmpublisher\Capabilities" Type="string" KeyPath="yes" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\RegisteredApplications" Name="nwmpublisher" Value="SOFTWARE\nwmpublisher\Capabilities" Type="string" KeyPath="yes" />
 
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\gmpublisher.gma.Document" Name="GMA File" Value="Packed Garry's Mod Addon" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\nwmpublisher.gma.Document" Name="GMA File" Value="Packed Garry's Mod Addon" Type="string" />
 				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\.gma" Name="Content Type" Value="application/gma" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\.gma\OpenWithList\gmpublisher" Value="" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\.gma\OpenWithProgids" Name="gmpublisher.gma.Document" Value="" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\Applications\gmpublisher\SupportedTypes" Name=".gma" Value="" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\Applications\gmpublisher\shell\open" Name="FriendlyAppName" Value="gmpublisher" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\.gma\OpenWithList\nwmpublisher" Value="" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\.gma\OpenWithProgids" Name="nwmpublisher.gma.Document" Value="" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\Applications\nwmpublisher\SupportedTypes" Name=".gma" Value="" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\Applications\nwmpublisher\shell\open" Name="FriendlyAppName" Value="nwmpublisher" Type="string" />
 
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\gmpublisher" Value="[!gmpublisher]" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\gmpublisher" Name="Path" Value="[INSTALLDIR]" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\nwmpublisher" Value="[!nwmpublisher]" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\nwmpublisher" Name="Path" Value="[INSTALLDIR]" Type="string" />
 			</Component>
 		</DirectoryRef>
 
@@ -125,7 +125,7 @@
 			</Feature>
 			-->
 
-			<Feature Id="FileTypeAssociations" Title="File Type Associations" Description="Associates .gma with gmpublisher for extractions" Level="1" Absent="allow" AllowAdvertise="no">
+			<Feature Id="FileTypeAssociations" Title="File Type Associations" Description="Associates .gma with nwmpublisher for extractions" Level="1" Absent="allow" AllowAdvertise="no">
 				<ComponentRef Id="FileTypeAssociationsReg"/>
 			</Feature>
 		</Feature>

@@ -142,7 +142,7 @@
 			"recycle": "Recycler",
 			"delete": "Supprimer",
 			"overwrite": "Écraser",
-			"tooltip": "Lors de l'extraction de GMAs, que doit faire gmpublisher si le répertoire de destination existe déjà ?"
+			"tooltip": "Lors de l'extraction de GMAs, que doit faire nwmpublisher si le répertoire de destination existe déjà ?"
 		},
 
 		"accessibility": {
@@ -251,8 +251,8 @@
 	"update_available": "Nouvelle mise à jour disponible !\n{version}",
 	"workshop_page": "Page Workshop",
 	"steam_workshop": "Workshop Steam",
-	"open_count": "Vous avez ouvert gmpublisher {count} fois ! Félicitations !",
-	"enjoying_gmpublisher": "Vous appréciez gmpublisher ?",
+	"open_count": "Vous avez ouvert nwmpublisher {count} fois ! Félicitations !",
+	"enjoying_nwmpublisher": "Vous appréciez nwmpublisher ?",
 	"github_star_plz_i_need_a_job_maybe": "Si vous avez un compte GitHub, n'hésitez pas à laisser une étoile sur le %dépôt GitHub% si mon travail vous aide :D",
 	"vscode_glua_enhanced": "Si vous êtes développeur, mon extension %VSCode GLua Enhanced% pourrait vous intéresser.",
 

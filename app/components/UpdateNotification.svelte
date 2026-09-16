@@ -18,7 +18,7 @@
 
 	const CARGO_PKG_VERSION = /((?:\.?\d+)+)$/;
 	const updateAvailable = new Promise((resolve, reject) => {
-		fetch('https://api.github.com/repos/WilliamVenner/gmpublisher/releases/latest')
+		fetch('https://api.github.com/repos/DeisDev/nwmpublisher/releases/latest')
 			.then(response => response.json(), reject)
 			.then(data => {
 
@@ -53,7 +53,7 @@
 </script>
 
 {#await updateAvailable} {:then newVersion}
-	<a href="https://github.com/WilliamVenner/gmpublisher/releases/tag/{newVersion}" target="_blank" use:tooltip={newVersion} class="nav-icon">
+	<a href="https://github.com/DeisDev/nwmpublisher/releases/tag/{newVersion}" target="_blank" use:tooltip={newVersion} class="nav-icon">
 		<CloudDownload size="1.5rem" stroke-width="1.5" id="update-icon"/>
 	</a>
 {/await}

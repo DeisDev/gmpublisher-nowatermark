@@ -61,6 +61,6 @@ export default defineConfig(async () => ({
 		},
 	},
 	define: {
-		'__GMPUBLISHER_APP_LANGUAGES__': JSON.stringify(JSON.stringify(appLanguages))
+		'__NWMPUBLISHER_APP_LANGUAGES__': JSON.stringify(JSON.stringify(appLanguages))
 	}
 }));

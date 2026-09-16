@@ -142,7 +142,7 @@
 			"recycle": "Recykling",
 			"delete": "Usuń",
 			"overwrite": "Overwrite",
-			"tooltip": "Podczas ekstraktowania GMAs, co ma zrobić gmpublisher jeżeli ścieżka ekstraktowania GMA's już istnieje (GMA został ekstraktowany wcześniej)?"
+			"tooltip": "Podczas ekstraktowania GMAs, co ma zrobić nwmpublisher jeżeli ścieżka ekstraktowania GMA's już istnieje (GMA został ekstraktowany wcześniej)?"
 		},
 
 		"accessibility": {
@@ -175,7 +175,7 @@
 	"ERR_DOWNLOAD_FAILED": "Błąd pobierania",
 	"ERR_ITEM_NOT_FOUND": "Przedmiot nie znaleziony",
 	"ERR_ITEM_INACCESSIBLE": "Przedmiot niedostępny",
-	"ERR_INVALID_CONTENT_PATH": "Ścieżka nie istnieje, nie jest prawidłowa, albo po prostu gmpublisher nie ma do niej dostępu",
+	"ERR_INVALID_CONTENT_PATH": "Ścieżka nie istnieje, nie jest prawidłowa, albo po prostu nwmpublisher nie ma do niej dostępu",
 	"ERR_MULTIPLE_GMAS": "Znaleziono kilka plików GMA w tej ścieżce",
 	"ERR_DUPLICATE_ENTRIES": "W tej scieżce znajduje się duplikat zapisu ({data}). Wszystkie ścieżki muszą być unikatowe, oraz napisane małymi literami. i use arch btw",
 	"ERR_NO_ENTRIES": "W tej ścieżce nie znaleziono żadnych zapisów.",
@@ -240,8 +240,8 @@
 	"update_available": "Dostępna jest nowa aktualizacja!\n{version}",
 	"workshop_page": "Strona Warsztatu Steam",
 	"steam_workshop": "Warsztat Steam",
-	"open_count": "Otworzyłeś gmpublisher po raz {count}! Gratulację!",
-	"enjoying_gmpublisher": "Podoba się tobie gmpublisher?",
+	"open_count": "Otworzyłeś nwmpublisher po raz {count}! Gratulację!",
+	"enjoying_nwmpublisher": "Podoba się tobie nwmpublisher?",
 	"github_star_plz_i_need_a_job_maybe": "Jeżeli posiadasz konto GitHub, może walniesz w gwiazdeczkę %GitHub repository%, jeżeli moja praca tobie pomogła :D",
 	"vscode_glua_enhanced": "Jeśli jesteś deweloperem, możliwe jest to że jesteś zainteresowany w %VSCode GLua Enhanced%.",
 

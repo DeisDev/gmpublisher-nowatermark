@@ -86,7 +86,7 @@ fn main() {
 		return;
 	}
 
-	println!("gmpublisher v{}", env!("CARGO_PKG_VERSION"));
+	println!("nwmpublisher v{}", env!("CARGO_PKG_VERSION"));
 
 	#[cfg(debug_assertions)]
 	deadlock_watchdog();
@@ -101,9 +101,9 @@ fn main() {
 		.setup(|app| {
 			let settings = APP_DATA.settings.read();
 
-			let window = app.get_window("gmpublisher").unwrap();
+			let window = app.get_window("nwmpublisher").unwrap();
 
-			window.set_title(&format!("gmpublisher v{}", env!("CARGO_PKG_VERSION"))).ok();
+			window.set_title(&format!("nwmpublisher v{}", env!("CARGO_PKG_VERSION"))).ok();
 
 			window
 				.set_size(tauri::Size::Logical(tauri::LogicalSize {

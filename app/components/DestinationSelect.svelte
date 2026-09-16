@@ -27,7 +27,7 @@
 		const dest = click ? this.dataset.dest : null;
 		switch(this.dataset.dest) {
 			case 'tmp':
-				extractPath = [dest, trimPath(AppData.temp_dir) + PATH_SEPARATOR + 'gmpublisher', AppSettings.create_folder_on_extract];
+				extractPath = [dest, trimPath(AppData.temp_dir) + PATH_SEPARATOR + 'nwmpublisher', AppSettings.create_folder_on_extract];
 				break;
 
 			case 'addons':

@@ -142,7 +142,7 @@
 			"recycle": "Reciclar",
 			"delete": "Excluir",
 			"overwrite": "Sobrescrever",
-			"tooltip": "Ao extrair GMAs, o que o gmpublisher deve fazer se o diretório de extração do GMA já existir (o GMA já foi extraído antes)?"
+			"tooltip": "Ao extrair GMAs, o que o nwmpublisher deve fazer se o diretório de extração do GMA já existir (o GMA já foi extraído antes)?"
 		},
 
 		"accessibility": {
@@ -179,7 +179,7 @@
 	"ERR_DOWNLOAD_FAILED": "Falha no download",
 	"ERR_ITEM_NOT_FOUND": "Item não encontrado",
 	"ERR_ITEM_INACCESSIBLE": "Item inacessível",
-	"ERR_INVALID_CONTENT_PATH": "Este caminho de conteúdo não existe, não é um diretório ou o gmpublisher não tem permissões suficientes para acessá-lo",
+	"ERR_INVALID_CONTENT_PATH": "Este caminho de conteúdo não existe, não é um diretório ou o nwmpublisher não tem permissões suficientes para acessá-lo",
 	"ERR_MULTIPLE_GMAS": "Vários arquivos GMA encontrados neste caminho de conteúdo",
 	"ERR_IMAGE_ERROR": "Erro de imagem: {data}",
 	"ERR_DUPLICATE_ENTRIES": "Existem entradas duplicadas neste caminho de conteúdo. i use arch btw",
@@ -250,8 +250,8 @@
 	"update_available": "Nova atualização disponível!\n{version}",
 	"workshop_page": "Página da Oficina",
 	"steam_workshop": "Oficina Steam",
-	"open_count": "Você abriu o gmpublisher {count} vezes! Parabéns!",
-	"enjoying_gmpublisher": "Está gostando do gmpublisher?",
+	"open_count": "Você abriu o nwmpublisher {count} vezes! Parabéns!",
+	"enjoying_nwmpublisher": "Está gostando do nwmpublisher?",
 	"github_star_plz_i_need_a_job_maybe": "Se você tem uma conta no GitHub, considere adicionar uma estrela no %repositório do GitHub% se o meu trabalho o ajudou :D",
 	"vscode_glua_enhanced": "Se você é um desenvolvedor, também pode estar interessado na minha extensão %VSCode GLua Enhanced%.",
 

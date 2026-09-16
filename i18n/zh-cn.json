@@ -142,7 +142,7 @@
 			"recycle": "移动到回收站",
 			"delete": "删除",
 			"overwrite": "覆写",
-			"tooltip": "解压 GMA 时, 在目录已经存在时 gmpublisher 应该怎么做 (GMA 文件之前已经被解压过)？"
+			"tooltip": "解压 GMA 时, 在目录已经存在时 nwmpublisher 应该怎么做 (GMA 文件之前已经被解压过)？"
 		},
 
 		"accessibility": {
@@ -179,7 +179,7 @@
 	"ERR_DOWNLOAD_FAILED": "下载失败",
 	"ERR_ITEM_NOT_FOUND": "物品未找到",
 	"ERR_ITEM_INACCESSIBLE": "物品不可访问",
-	"ERR_INVALID_CONTENT_PATH": "内容路径未找到, 可能为非文件夹或 gmpublisher 没有权限来访问",
+	"ERR_INVALID_CONTENT_PATH": "内容路径未找到, 可能为非文件夹或 nwmpublisher 没有权限来访问",
 	"ERR_MULTIPLE_GMAS": "在该内容路径里发现了多个 GMA 文件",
 	"ERR_IMAGE_ERROR": "图像错误：{data}",
 	"ERR_DUPLICATE_ENTRIES": "在此内容路径内发现了重复的条目（{data}）。所有路径都必须是独一无二并且全小写。",
@@ -251,8 +251,8 @@
 	"update_available": "有新版本可用！\n{version}",
 	"workshop_page": "创意工坊页面",
 	"steam_workshop": "Steam 创意工坊",
-	"open_count": "您已经打开了 gmpublisher {count} 次！恭喜！",
-	"enjoying_gmpublisher": "喜欢 gmpublisher 吗？",
+	"open_count": "您已经打开了 nwmpublisher {count} 次！恭喜！",
+	"enjoying_nwmpublisher": "喜欢 nwmpublisher 吗？",
 	"github_star_plz_i_need_a_job_maybe": "如果您有 GitHub 账户的话, 并且我的软件给您提供很大帮助的话, 考虑一下给 %GitHub repository% 点个星标吧 :D",
 	"vscode_glua_enhanced": "如果您是开发者的话, 您或许对我的 %VSCode GLua Enhanced% 扩展感兴趣。",
 
