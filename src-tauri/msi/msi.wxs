@@ -13,7 +13,17 @@
 
 		<Package Id="*" Keywords="Installer" InstallerVersion="450" Languages="1033" Compressed="yes" InstallScope="perMachine" SummaryCodepage="1252"/>
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." AllowSameVersionUpgrades="yes" Schedule="afterInstallInitialize" />
+		<!-- Installers in this family replace each other, so this one takes over from an existing
+		     gmpublisher install. Matching every version, newer ones included, also keeps the fork
+		     installable when upstream has released a higher version, and removes the previous product
+		     before any files are written. -->
+		<Upgrade Id="9C296848-ABD3-4538-92D0-3BC4E408F34C">
+			<UpgradeVersion Minimum="0.0.0" IncludeMinimum="yes" Property="WIX_UPGRADE_DETECTED" RemoveFeatures="ALL" />
+		</Upgrade>
+
+		<InstallExecuteSequence>
+			<RemoveExistingProducts After="InstallInitialize" />
+		</InstallExecuteSequence>
 
 		<Media Id="1" Cabinet="app.cab" EmbedCab="yes" />
 
