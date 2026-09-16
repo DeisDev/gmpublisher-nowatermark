@@ -46,3 +46,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed MSI metadata, optional file associations, and shortcut registration.
 - Embedded the WebView2 bootstrapper for checked, silent runtime installation.
 - Fixed failed update checks and notification cleanup.
+- Fixed MSI icon linking and unused-result warnings in release builds.

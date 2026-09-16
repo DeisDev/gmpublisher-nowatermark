@@ -1,11 +1,15 @@
 #[macro_export]
 macro_rules! ignore {
-	( $x:expr ) => {
+	( $x:expr ) => {{
 		#[cfg(debug_assertions)]
-		$x.unwrap();
+		{
+			$x.unwrap();
+		}
 		#[cfg(not(debug_assertions))]
-		$x
-	};
+		{
+			let _ = $x;
+		}
+	}};
 }
 
 #[macro_export]

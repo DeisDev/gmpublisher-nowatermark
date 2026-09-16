@@ -70,7 +70,7 @@
 			-->
 
 			<Component Id="FileTypeAssociationsReg" Guid="*" Win64="$(var.Win64)">
-				<ProgId Id="nwmpublisher.gma.Document" Description="Packed Garry's Mod Addon" Icon="ProductIcon" IconIndex="0">
+				<ProgId Id="nwmpublisher.gma.Document" Description="Packed Garry's Mod Addon" Icon="EXE" IconIndex="0">
 					<Extension Id="gma" ContentType="application/gma">
 						<Verb Id="open" Command="Open" TargetFile="EXE" Argument="-e &quot;%1&quot;" />
 					</Extension>
