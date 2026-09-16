@@ -47,3 +47,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Embedded the WebView2 bootstrapper for checked, silent runtime installation.
 - Fixed failed update checks and notification cleanup.
 - Fixed MSI icon linking and unused-result warnings in release builds.
+- Updated panic hooks and removed unnecessary mutable-static and unused bindings.

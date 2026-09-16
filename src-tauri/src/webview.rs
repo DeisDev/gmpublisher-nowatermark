@@ -179,10 +179,10 @@ pub fn warn(message: String) {
 	println!("[WebView] [WARN] {}", message);
 }
 
-static mut RELOADED: AtomicBool = AtomicBool::new(false);
+static RELOADED: AtomicBool = AtomicBool::new(false);
 #[tauri::command]
 pub fn reloaded() {
-	if unsafe { RELOADED.fetch_or(true, std::sync::atomic::Ordering::SeqCst) } {
+	if RELOADED.fetch_or(true, std::sync::atomic::Ordering::SeqCst) {
 		crate::commands::free_caches();
 
 		// The webview was served the app data captured when it first loaded, so hand it

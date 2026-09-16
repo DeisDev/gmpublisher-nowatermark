@@ -1,10 +1,7 @@
 use crate::NTStringWriter;
 use byteorder::{BigEndian, WriteBytesExt};
 use crossbeam::channel::{Receiver, Sender};
-use std::{
-	convert::TryInto,
-	net::{TcpListener, TcpStream},
-};
+use std::net::{TcpListener, TcpStream};
 use websocket::{
 	server::{NoTlsAcceptor, WsServer},
 	sync::{Client, Server},
@@ -175,9 +172,9 @@ impl TransactionServer {
 					}
 				}
 
-				OwnedMessage::Text(text) => {
+				OwnedMessage::Text(_text) => {
 					#[cfg(debug_assertions)]
-					println!("WebSocket Message: {}", text);
+					println!("WebSocket Message: {}", _text);
 					#[cfg(not(debug_assertions))]
 					unreachable!();
 				}

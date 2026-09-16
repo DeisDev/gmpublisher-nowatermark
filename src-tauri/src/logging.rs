@@ -1,4 +1,4 @@
-use std::{fs::OpenOptions, panic::PanicInfo};
+use std::{fs::OpenOptions, panic::PanicHookInfo};
 
 use crossbeam::channel::Sender;
 
@@ -55,23 +55,23 @@ lazy_static! {
 
 #[macro_export]
 macro_rules! println {
-	($($arg:tt)*) => {
+	($($arg:tt)*) => {{
 		let log = format!($($arg)*);
 		std::println!("{}", &log);
 		crate::ignore! { crate::logging::LOG_CHANNEL.send(crate::logging::LogMessage::Stdout(log)) };
-	};
+	}};
 }
 
 #[macro_export]
 macro_rules! eprintln {
-	($($arg:tt)*) => {
+	($($arg:tt)*) => {{
 		let log = format!($($arg)*);
 		std::eprintln!("{}", &log);
 		crate::ignore! { crate::logging::LOG_CHANNEL.send(crate::logging::LogMessage::Stderr(log)) };
-	};
+	}};
 }
 
-pub fn panic(panic: &PanicInfo) {
+pub fn panic(panic: &PanicHookInfo<'_>) {
 	use std::io::Write;
 
 	let backtrace = backtrace::Backtrace::new();
