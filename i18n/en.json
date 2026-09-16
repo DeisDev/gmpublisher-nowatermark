@@ -187,6 +187,7 @@
 	"ERR_WORKSHOP_LEGAL_AGREEMENT": "Workshop legal agreement not accepted",
 
 	"icon_instructions": "Accepted Formats: JPG, PNG, GIF\nMax Size: 1 MB\nRecommended: 512x512",
+	"default_icon_tip": "Your Steam avatar is used by default. Click to choose a different image.",
 	"addon_title": "Title...",
 	"addon_path": "Addon Path...",
 	"gma_file_name_placeholder": "publishedaddon",

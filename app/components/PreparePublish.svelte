@@ -48,6 +48,16 @@
 	let pathInputContainer;
 	let pathValue = '';
 	let pathFailMessage = null;
+
+	// The preview image the backend uploads when no icon is chosen: the user's Steam avatar
+	let defaultIconUrl = '/img/steam_anonymous.jpg';
+	function refreshDefaultIcon() {
+		invoke('default_workshop_icon').then(icon => {
+			if (icon) defaultIconUrl = 'data:image/png;base64,' + icon;
+		});
+	}
+	refreshDefaultIcon();
+	$: if ($preparePublish) refreshDefaultIcon();
 	function browseAddon() {
 		dialog.open({ directory: true }).then(path => {
 			if (path && path.length > 0) {
@@ -392,7 +402,7 @@
 				{#if canUpscale && upscale.checked}
 					<div id="addon-icon" class="upscale">
 						<img src={gmaIconBase64} bind:this={gmaIcon}/>
-						<img src="/img/gmpublisher_default_icon.png"/>
+						<img src={defaultIconUrl}/>
 					</div>
 				{:else}
 					<div id="addon-icon">
@@ -401,9 +411,9 @@
 				{/if}
 			</div>
 		{:else}
-			<div id="icon-container" on:click={browseIcon}>
-				<div id="addon-icon-background" style="background-image: url('/img/gmpublisher_default_icon.png')"></div>
-				<div id="addon-icon"><img src="/img/gmpublisher_default_icon.png" bind:this={gmaIcon}/></div>
+			<div id="icon-container" on:click={browseIcon} use:tippy={$_('default_icon_tip')}>
+				<div id="addon-icon-background" style="background-image: url('{defaultIconUrl}')"></div>
+				<div id="addon-icon"><img src={defaultIconUrl} bind:this={gmaIcon}/></div>
 			</div>
 		{/if}
 		<div id="icon-browse-container">

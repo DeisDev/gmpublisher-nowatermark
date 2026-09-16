@@ -20,6 +20,7 @@ use crate::{
 
 use crate::webview_emit;
 
+pub mod default_icon;
 pub mod downloads;
 pub mod publishing;
 pub mod subscriptions;

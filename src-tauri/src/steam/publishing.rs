@@ -114,7 +114,6 @@ impl ContentPath {
 
 const WORKSHOP_ICON_MAX_SIZE: u64 = 1048576;
 const WORKSHOP_ICON_MIN_SIZE: u64 = 16;
-const WORKSHOP_DEFAULT_ICON: &[u8] = include_bytes!("../../../public/img/gmpublisher_default_icon.png");
 
 pub enum WorkshopIcon {
 	Custom {
@@ -164,10 +163,13 @@ impl From<WorkshopIcon> for PathBuf {
 			}
 			WorkshopIcon::Default => {
 				let mut path = app_data!().temp_dir().to_owned();
-				path.push("gmpublisher_default_icon.png");
-				if !path.is_file() && path.metadata().map(|metadata| metadata.len()).unwrap_or(0) != WORKSHOP_DEFAULT_ICON.len() as u64 {
-					std::fs::write(&path, WORKSHOP_DEFAULT_ICON).expect("Failed to write default icon to temp directory!");
-				}
+				path.push("default_workshop_icon.png");
+
+				// Regenerated on every publish so that a changed Steam avatar is picked up
+				super::default_icon::compose()
+					.save_with_format(&path, ImageFormat::Png)
+					.expect("Failed to write the default Workshop icon to the temp directory!");
+
 				path
 			}
 		}
@@ -246,7 +248,6 @@ impl Steam {
 					.title(&title)
 					.preview_path(&Into::<PathBuf>::into(preview))
 					.tags(tags, false)
-					.description("Uploaded with [url=https://github.com/WilliamVenner/gmpublisher]gmpublisher[/url]")
 					.submit(None, move |result| {
 						*result_ref.lock() = Some(result);
 					})
