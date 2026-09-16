@@ -19,3 +19,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Newly published Workshop items no longer get "Uploaded with gmpublisher" written into their
   description.
+- The Steam status shown while the app is running no longer reads "In gmpublisher"; it now reads
+  "In the Workshop".

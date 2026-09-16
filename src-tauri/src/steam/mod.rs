@@ -129,8 +129,9 @@ impl Steam {
 		lazy_static::initialize(&DOWNLOADS);
 		std::thread::spawn(Downloads::watchdog);
 
+		// Shows up on the friends list as "In the Workshop", under Garry's Mod's status token
 		steam!().client().friends().set_rich_presence("steam_display", Some("#Status_Generic"));
-		steam!().client().friends().set_rich_presence("generic", Some("In gmpublisher"));
+		steam!().client().friends().set_rich_presence("generic", Some("the Workshop"));
 
 		if app_data!().settings.read().gmod.is_none() {
 			app_data!().send();
