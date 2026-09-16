@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   folders, and the WebSocket subprotocol.
 - The update checker and the GitHub links now point at
   [DeisDev/nwmpublisher](https://github.com/DeisDev/nwmpublisher) instead of upstream gmpublisher.
+- The Windows installer shares gmpublisher's upgrade code, so installing it replaces an existing
+  gmpublisher installation. Settings are left in place and offered for import on first launch.
 - Credits now name DeisDev "CatSniffer" as the maintainer. The MSI publisher and Cargo authors list
   include DeisDev alongside William Venner, whose attribution is kept.
 - Published GMA files are no longer always named `gmpublisher.gma`. The file name now follows the

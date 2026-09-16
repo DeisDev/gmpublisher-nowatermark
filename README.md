@@ -1,51 +1,42 @@
 # ⚙️ nwmpublisher
 
-A fork of [gmpublisher](https://github.com/WilliamVenner/gmpublisher), renamed to `nwmpublisher`
-and with all of the branding stripped out. It is otherwise the same feature-packed Workshop
-publisher for Garry's Mod.
+A fork of [gmpublisher](https://github.com/WilliamVenner/gmpublisher) with the branding stripped out.
+Underneath it's the same feature-packed Workshop publisher for Garry's Mod.
 
-Maintained by **DeisDev** ("CatSniffer") at [DeisDev/nwmpublisher](https://github.com/DeisDev/nwmpublisher).
+Maintained by [DeisDev](https://github.com/DeisDev) ("CatSniffer").
 
 ## What's different
 
-* **It's `nwmpublisher` everywhere.** The executable, installer, window title, CLI, config and temp
-  folders, registry entries and `.gma` file association no longer say gmpublisher.
+* **The name.** The executable, installer, window title, CLI, config and temp folders, registry
+  entries and `.gma` file association all say nwmpublisher.
 * **Your GMA files are named by you.** The packed file follows the addon title you type in the
-  publish window, can be renamed to whatever you like, and falls back to `publishedaddon.gma` if you
-  leave the field empty. No more `gmpublisher.gma`.
+  publish window, can be renamed to whatever you like, and falls back to `publishedaddon.gma` when
+  left empty. No more `gmpublisher.gma`.
 * **The default Workshop preview icon is your own Steam avatar**, cropped to a circle with a white
   outline, instead of the gmpublisher logo.
-* **Newly published Workshop items** no longer get "Uploaded with gmpublisher" written into their
-  description.
-* **Your Steam status** while the app is open reads "In the Workshop", not "In gmpublisher".
-* **The branded default icon image** has been deleted from the repository.
+* **Nothing you publish mentions gmpublisher** — not the item description, and not your Steam status,
+  which reads "In the Workshop".
 
-Everything else is upstream gmpublisher, so the documentation below still applies as-is. All credit
-for the app itself goes to [William Venner](https://github.com/WilliamVenner) and the
+Everything else is upstream gmpublisher, so the documentation below still applies. All credit for the
+app itself goes to [William Venner](https://github.com/WilliamVenner) and the
 [gmpublisher contributors](https://github.com/WilliamVenner/gmpublisher/graphs/contributors).
 
 ## 📦 Installation
 
-This fork doesn't have prebuilt releases yet, so build it from source — the
-[build workflow](.github/workflows/build.yml) has the exact steps. The binary lands in
-`src-tauri/target/release/nwmpublisher` (`nwmpublisher.exe` on Windows), next to
-`steam_api64.dll` — run it from there, no install required.
-
-The [upstream releases](https://github.com/WilliamVenner/gmpublisher/releases) and the AUR package
-[`gmpublisher-bin`](https://aur.archlinux.org/packages/gmpublisher-bin) install the original
-*gmpublisher*, branding included.
-
-Linux users may need to install additional dependencies.
+Download the latest release from the [releases page](https://github.com/DeisDev/nwmpublisher/releases).
 
 ### Upgrading from gmpublisher
 
-On first launch nwmpublisher looks for settings left behind by gmpublisher and offers to import
-them. Choosing "Import and Restart" brings over your destinations, local addon paths and
-preferences, and the app restarts with them applied.
+On Windows, installing nwmpublisher **replaces** an existing gmpublisher installation. The installer
+uses the same upgrade code as gmpublisher, so Windows uninstalls gmpublisher and its shortcuts
+first — the two can't be installed side by side.
 
-If you'd rather move them by hand, settings live in the `nwmpublisher` folder inside your config
-directory (`%APPDATA%` on Windows, `~/.config` on Linux, `~/Library/Application Support` on macOS):
-copy `settings.json` there from the old `gmpublisher` folder.
+Your settings are left where they are. On first launch nwmpublisher finds them and offers to import
+them — destinations, local addon paths and preferences — then restarts with them applied.
+
+To move them yourself instead, copy `settings.json` from the old `gmpublisher` folder into the
+`nwmpublisher` folder in your config directory (`%APPDATA%` on Windows, `~/.config` on Linux,
+`~/Library/Application Support` on macOS).
 
 ## Tutorials
 
