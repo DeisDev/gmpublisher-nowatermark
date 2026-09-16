@@ -80,8 +80,8 @@
 				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\Applications\nwmpublisher\SupportedTypes" Name=".gma" Value="" Type="string" />
 				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\Applications\nwmpublisher\shell\open" Name="FriendlyAppName" Value="nwmpublisher" Type="string" />
 
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\nwmpublisher" Value="[!nwmpublisher]" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\nwmpublisher" Name="Path" Value="[INSTALLDIR]" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\nwmpublisher.exe" Value="[!EXE]" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\nwmpublisher.exe" Name="Path" Value="[INSTALLDIR]" Type="string" />
 			</Component>
 		</DirectoryRef>
 
