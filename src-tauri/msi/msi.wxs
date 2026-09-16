@@ -1,17 +1,19 @@
 <?if $(sys.BUILDARCH)="x86"?>
 <?define Win64 = "no" ?>
 <?define PlatformProgramFilesFolder = "ProgramFilesFolder" ?>
+<?define PlatformSystemFolder = "SystemFolder" ?>
 <?elseif $(sys.BUILDARCH)="x64"?>
 <?define Win64 = "yes" ?>
 <?define PlatformProgramFilesFolder = "ProgramFiles64Folder" ?>
+<?define PlatformSystemFolder = "System64Folder" ?>
 <?else?>
 <?error Unsupported value of sys.BUILDARCH=$(sys.BUILDARCH)?>
 <?endif?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="{{{product_name}}}" UpgradeCode="9C296848-ABD3-4538-92D0-3BC4E408F34C" Language="1033" Codepage="1252" Manufacturer="DeisDev" Version="{{{version}}}">
+	<Product Id="*" Name="{{{product_name}}}" UpgradeCode="9C296848-ABD3-4538-92D0-3BC4E408F34C" Language="1033" Codepage="1252" Manufacturer="{{{manufacturer}}}" Version="{{{version}}}">
 
-		<Package Id="*" Keywords="Installer" InstallerVersion="450" Languages="1033" Compressed="yes" InstallScope="perMachine" SummaryCodepage="1252"/>
+		<Package Id="*" Description="{{{product_name}}} Installer" Manufacturer="{{{manufacturer}}}" Comments="Garry's Mod Workshop Publishing Utility" Keywords="Installer" InstallerVersion="450" Languages="1033" Compressed="yes" InstallScope="perMachine" SummaryCodepage="1252"/>
 
 		<!-- Installers in this family replace each other, so this one takes over from an existing
 		     gmpublisher install. Matching every version, newer ones included, also keeps the fork
@@ -29,6 +31,7 @@
 
 		<Icon Id="ProductIcon" SourceFile="{{{icon_path}}}"/>
 		<Property Id="ARPPRODUCTICON" Value="ProductIcon" />
+		<Property Id="ARPURLINFOABOUT" Value="https://github.com/DeisDev/nwmpublisher" />
 		<Property Id="ARPNOREPAIR" Value="yes" Secure="yes" />
 		<!-- Remove repair -->
 		<SetProperty Id="ARPNOMODIFY" Value="1" After="InstallValidate" Sequence="execute"/>
@@ -51,12 +54,12 @@
             {{/each~}}
             {{{resources}}}
 
-			<Component Id="CMP_ReadFileShortcut" Guid="1AF06B42-CD42-4AED-959F-36DB5E512046">
-				<Shortcut Id="UninstallShortcut" Name="Uninstall {{{product_name}}}" Description="Uninstalls {{{product_name}}}" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
+			<Component Id="CMP_ReadFileShortcut" Guid="*" Win64="$(var.Win64)">
+				<Shortcut Id="UninstallShortcut" Name="Uninstall {{{product_name}}}" Description="Uninstalls {{{product_name}}}" Target="[$(var.PlatformSystemFolder)]msiexec.exe" Arguments="/x [ProductCode]" />
 
 				<RemoveFolder Id="INSTALLDIR" On="uninstall" />
 
-				<RegistryValue Root="HKCR" Key="Software\{{{manufacturer}}}\{{{product_name}}}" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+				<RegistryValue Root="HKLM" Key="Software\{{{manufacturer}}}\{{{product_name}}}" Name="installed" Type="integer" Value="1" KeyPath="yes" />
 			</Component>
 
 			<!--
@@ -66,39 +69,37 @@
 			</Component>
 			-->
 
-			<Component Id="FileTypeAssociationsReg" Guid="968b7fdb-58b9-46d7-86da-76d031acefce">
-				<ProgId Id="nwmpublisher.gma.Document" Description="GMA File">
+			<Component Id="FileTypeAssociationsReg" Guid="*" Win64="$(var.Win64)">
+				<ProgId Id="nwmpublisher.gma.Document" Description="Packed Garry's Mod Addon" Icon="ProductIcon" IconIndex="0">
 					<Extension Id="gma" ContentType="application/gma">
 						<Verb Id="open" Command="Open" TargetFile="EXE" Argument="-e &quot;%1&quot;" />
 					</Extension>
 				</ProgId>
 
-				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities" Name="ApplicationDescription" Value="nwmpublisher" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities" Name="ApplicationIcon" Value="[INSTALLDIR]nwmpublisher,0" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities" Name="ApplicationDescription" Value="Garry's Mod Workshop Publishing Utility" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities" Name="ApplicationIcon" Value="&quot;[#EXE]&quot;,0" Type="string" />
 				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities" Name="ApplicationName" Value="nwmpublisher" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities\DefaultIcon" Value="[INSTALLDIR]nwmpublisher,1" Type="string" />
 				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities\FileAssociations" Name=".gma" Value="nwmpublisher.gma.Document" Type="string" />
 				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities\MIMEAssociations" Name="application/gma" Value="nwmpublisher.gma.Document" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\nwmpublisher\Capabilities\shell\Open\command" Value="&quot;[INSTALLDIR]nwmpublisher&quot; -e &quot;%1&quot;" Type="string" />
 
 				<RegistryValue Root="HKLM" Key="SOFTWARE\RegisteredApplications" Name="nwmpublisher" Value="SOFTWARE\nwmpublisher\Capabilities" Type="string" KeyPath="yes" />
 
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\nwmpublisher.gma.Document" Name="GMA File" Value="Packed Garry's Mod Addon" Type="string" />
 				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\.gma" Name="Content Type" Value="application/gma" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\.gma\OpenWithList\nwmpublisher" Value="" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\.gma\OpenWithList\nwmpublisher.exe" Value="" Type="string" />
 				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\.gma\OpenWithProgids" Name="nwmpublisher.gma.Document" Value="" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\Applications\nwmpublisher\SupportedTypes" Name=".gma" Value="" Type="string" />
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\Applications\nwmpublisher\shell\open" Name="FriendlyAppName" Value="nwmpublisher" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\Applications\nwmpublisher.exe\SupportedTypes" Name=".gma" Value="" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\Applications\nwmpublisher.exe" Name="FriendlyAppName" Value="nwmpublisher" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Classes\Applications\nwmpublisher.exe\shell\open\command" Value="&quot;[#EXE]&quot; -e &quot;%1&quot;" Type="string" />
 
-				<RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\nwmpublisher.exe" Value="[!EXE]" Type="string" />
+				<RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\nwmpublisher.exe" Value="[#EXE]" Type="string" />
 				<RegistryValue Root="HKLM" Key="SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\nwmpublisher.exe" Name="Path" Value="[INSTALLDIR]" Type="string" />
 			</Component>
 		</DirectoryRef>
 
 		<DirectoryRef Id="ProgramMenuFolder">
-			<Component Id="ApplicationShortcut" Guid="81ccebd8-b769-4bed-bdbd-0340f9f7cad1">
-				<Shortcut Id="ApplicationStartMenuShortcut" Name="{{{product_name}}}" Description="Runs {{{product_name}}}" Target="[!EXE]" Icon="ProductIcon" WorkingDirectory="INSTALLDIR">
-					<ShortcutProperty Key="System.AppUserModel.ID" Value="{{{manufacturer}}}"/>
+			<Component Id="ApplicationShortcut" Guid="*">
+				<Shortcut Id="ApplicationStartMenuShortcut" Name="{{{product_name}}}" Description="Runs {{{product_name}}}" Target="[#EXE]" Icon="ProductIcon" WorkingDirectory="INSTALLDIR">
+					<ShortcutProperty Key="System.AppUserModel.ID" Value="{{{bundle_id}}}"/>
 				</Shortcut>
 				<RegistryValue Root="HKCU" Key="Software\{{{manufacturer}}}\{{{product_name}}}" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
 			</Component>
@@ -117,7 +118,6 @@
 		<Feature Id="MainProgram" Title="Application" Description="Installs {{{product_name}}}." Level="1" ConfigurableDirectory="INSTALLDIR" AllowAdvertise="no" Absent="disallow" Display="expand">
 			<ComponentRef Id="CMP_ReadFileShortcut" />
 			<ComponentRef Id="ProgramBinary"/>
-			<ComponentRef Id="FileTypeAssociationsReg"/>
 			{{#each binaries as |bin| ~}}
 				<ComponentRef Id="{{ bin.id }}"/>
 			{{/each~}}
@@ -151,16 +151,19 @@
 		<WixVariable Id='WixUIDialogBmp' Value='..\..\..\..\msi\msi.bmp'/>
 
         {{#if install_webview}}
-        <!-- WebView2 -->
+        <!-- Match the per-machine runtime installed by the elevated bootstrapper. -->
 		<Property Id="WVRTINSTALLED">
 			<RegistrySearch Id="WVRTInstalled" Root="HKLM" Key="SOFTWARE\Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}" Name="pv" Type="raw" Win64="no"/>
 		</Property>
-		<CustomAction Id='DownloadAndInvokeBootstrapper' Directory="INSTALLDIR" Execute="deferred" ExeCommand='powershell.exe -windowstyle hidden Invoke-WebRequest -Uri "https://go.microsoft.com/fwlink/p/?LinkId=2124703" -OutFile "$env:TEMP\MicrosoftEdgeWebview2Setup.exe" ; &amp; $env:TEMP\MicrosoftEdgeWebview2Setup.exe /install' Return='check'/>
+        {{#if webview2_bootstrapper_path}}
+		<Binary Id="WebView2Bootstrapper" SourceFile="{{{webview2_bootstrapper_path}}}"/>
+		<CustomAction Id="InvokeBootstrapper" BinaryKey="WebView2Bootstrapper" Execute="deferred" Impersonate="no" ExeCommand="{{{webview_installer_args}}} /install" Return="check"/>
 		<InstallExecuteSequence>
-			<Custom Action='DownloadAndInvokeBootstrapper' Before='InstallFinalize'>
-				<![CDATA[NOT(REMOVE OR WVRTINSTALLED)]]>
+			<Custom Action="InvokeBootstrapper" Before="InstallFinalize">
+				<![CDATA[NOT REMOVE AND (NOT WVRTINSTALLED OR WVRTINSTALLED = "0.0.0.0")]]>
 			</Custom>
 		</InstallExecuteSequence>
+        {{/if}}
         {{/if}}
 
 		<SetProperty Id="ARPINSTALLLOCATION" Value="[INSTALLDIR]" After="CostFinalize"/>

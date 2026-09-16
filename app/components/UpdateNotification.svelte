@@ -3,36 +3,9 @@
 	import { _ } from 'svelte-i18n';
 	import tippy from 'tippy.js';
 
-	function compareSemver(current, cmp) {
-		const currentParts = current.split('.').map(n => parseInt(n));
-		const cmpParts = cmp.split('.').map(n => parseInt(n));
-		for (let i = 0; i < 3; i++) {
-			if (currentParts[i] < cmpParts[i]) {
-				return true;
-			} else if (currentParts[i] !== cmpParts[i]) {
-				break;
-			}
-		}
-		return false;
-	}
+	import { getUpdateVersion } from '../update-check.js';
 
-	const CARGO_PKG_VERSION = /((?:\.?\d+)+)$/;
-	const updateAvailable = new Promise((resolve, reject) => {
-		fetch('https://api.github.com/repos/DeisDev/nwmpublisher/releases/latest')
-			.then(response => response.json(), reject)
-			.then(data => {
-
-				if (!data || !data.tag_name) return reject();
-
-				const cargoVersion = data.tag_name.match(CARGO_PKG_VERSION);
-				if (!cargoVersion || !cargoVersion[1]) return reject();
-
-				if (compareSemver(AppData.version, cargoVersion[1])) {
-					resolve(data.tag_name);
-				}
-
-			}, reject);
-	});
+	const updateAvailable = getUpdateVersion(AppData.version);
 
 	function tooltip(node, version) {
 		const instance = tippy(node, {
@@ -43,19 +16,28 @@
 		});
 		instance.popper.classList.add('update-popper');
 
-		setTimeout(() => {
+		const timeout = setTimeout(() => {
 			instance.hide();
 			instance.setProps({
 				trigger: 'mouseenter'
 			});
 		}, 10000);
+
+		return {
+			destroy() {
+				clearTimeout(timeout);
+				instance.destroy();
+			}
+		};
 	}
 </script>
 
 {#await updateAvailable} {:then newVersion}
-	<a href="https://github.com/DeisDev/nwmpublisher/releases/tag/{newVersion}" target="_blank" use:tooltip={newVersion} class="nav-icon">
-		<CloudDownload size="1.5rem" stroke-width="1.5" id="update-icon"/>
-	</a>
+	{#if newVersion}
+		<a href="https://github.com/DeisDev/nwmpublisher/releases/tag/{encodeURIComponent(newVersion)}" target="_blank" use:tooltip={newVersion} class="nav-icon">
+			<CloudDownload size="1.5rem" stroke-width="1.5" id="update-icon"/>
+		</a>
+	{/if}
 {/await}
 
 <style>

@@ -22,12 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   [DeisDev/nwmpublisher](https://github.com/DeisDev/nwmpublisher) instead of upstream gmpublisher.
 - The Windows installer shares gmpublisher's upgrade code, so installing it replaces an existing
   gmpublisher installation. Settings are left in place and offered for import on first launch.
-- This fork now has its own version line, starting at 3.0.0, so it sits above upstream gmpublisher's
-  releases and can't be replaced by them.
+- Started an independent version line at 3.0.0.
 - The installer matches every version of the shared product family and removes what it finds, so it
   can always be installed over an existing gmpublisher build, newer versions included.
-- Credits now name DeisDev "CatSniffer" as the maintainer. The MSI publisher and Cargo authors list
-  include DeisDev alongside William Venner, whose attribution is kept.
+- Set DeisDev as the MSI publisher and retained William Venner in the author credits.
 - Published GMA files are no longer always named `gmpublisher.gma`. The file name now follows the
   addon title entered in the publish window, and can be overridden with any name you like.
 - If no name is given, the packed file is named `publishedaddon.gma`.
@@ -45,3 +43,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - The gmpublisher settings prompt no longer comes back after importing. It used to reappear on the
   restart that follows the import and only went away once the app was closed and opened again.
+- Fixed MSI metadata, optional file associations, and shortcut registration.
+- Embedded the WebView2 bootstrapper for checked, silent runtime installation.
+- Fixed failed update checks and notification cleanup.
