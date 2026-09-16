@@ -5,6 +5,7 @@ use std::{
 	fs::{self, File, OpenOptions},
 	io::{Seek, SeekFrom},
 	path::PathBuf,
+	sync::atomic::{AtomicBool, Ordering},
 };
 
 use crate::{
@@ -34,6 +35,11 @@ lazy_static! {
 	/// Evaluated before anything can write settings, so it stays true for the whole run.
 	static ref HAD_SETTINGS_FILE: bool = APP_SETTINGS_PATH.is_file();
 }
+
+/// Whether the legacy settings offer has been answered in this run.
+/// Importing reloads the webview rather than restarting the process, so without this the
+/// offer would keep coming back until the app was closed and opened again.
+static MIGRATION_RESOLVED: AtomicBool = AtomicBool::new(false);
 
 #[derive(Debug)]
 pub struct OpenCount(Cell<u32>);
@@ -378,7 +384,7 @@ pub fn update_settings(mut settings: Settings) -> bool {
 /// Only true on a first launch, so the user is never asked twice.
 #[tauri::command]
 pub fn legacy_settings_pending() -> bool {
-	!*HAD_SETTINGS_FILE && LEGACY_APP_SETTINGS_PATH.is_file()
+	!MIGRATION_RESOLVED.load(Ordering::Relaxed) && !*HAD_SETTINGS_FILE && LEGACY_APP_SETTINGS_PATH.is_file()
 }
 
 /// Imports the settings left behind by gmpublisher's config directory.
@@ -389,6 +395,8 @@ pub fn migrate_legacy_settings() -> bool {
 		Ok(settings) => settings,
 		Err(_) => return false,
 	};
+
+	MIGRATION_RESOLVED.store(true, Ordering::Relaxed);
 
 	ignore! { settings.save() };
 
@@ -410,6 +418,7 @@ pub fn migrate_legacy_settings() -> bool {
 /// the user isn't asked to migrate again on the next launch.
 #[tauri::command]
 pub fn dismiss_legacy_settings() {
+	MIGRATION_RESOLVED.store(true, Ordering::Relaxed);
 	ignore! { app_data!().settings.read().save() };
 }
 

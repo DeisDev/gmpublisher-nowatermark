@@ -111,37 +111,3 @@ jobs:
       with:
         files: src-tauri/target/universal-apple-darwin/release/bundle/macos/nwmpublisher_macOS.app.zip
         fail_on_unmatched_files: true
-
-  aur_publish:
-    runs-on: ubuntu-latest
-    needs: build_linux
-    container: archlinux:base-devel
-    steps:
-      - uses: actions/checkout@v4
-      - name: Update PKGBUILD Version and Checksums
-        run: |
-          VERSION=${{ github.ref_name }}
-
-          echo "Updating PKGBUILD to version $VERSION"
-
-          pacman -Sy --noconfirm pacman-contrib
-
-          sed -i "s/^pkgver=.*/pkgver=$VERSION/" PKGBUILD
-          sed -i "s/^pkgrel=.*/pkgrel=1/" PKGBUILD
-
-          useradd -m builder
-          chown -R builder:builder .
-
-          su builder -c "updpkgsums"
-          su builder -c "makepkg --printsrcinfo > .SRCINFO"
-
-      - name: Publish AUR Package
-        uses: KSXGitHub/github-actions-deploy-aur@v4.1.1
-        with:
-          pkgname: nwmpublisher-bin
-          pkgbuild: ./PKGBUILD
-          commit_username: ${{ secrets.AUR_USERNAME }}
-          commit_email: ${{ secrets.AUR_EMAIL }}
-          ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
-          commit_message: "Update to version ${{ github.ref_name }}"
-          updpkgsums: false

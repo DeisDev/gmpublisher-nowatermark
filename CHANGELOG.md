@@ -40,3 +40,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   description.
 - The Steam status shown while the app is running no longer reads "In gmpublisher"; it now reads
   "In the Workshop".
+
+### Fixed
+
+- The gmpublisher settings prompt no longer comes back after importing. It used to reappear on the
+  restart that follows the import and only went away once the app was closed and opened again.
