@@ -1,37 +1,41 @@
 <script>
 	import { onMount } from "svelte";
+	import { open } from '@tauri-apps/api/shell';
 	import Modal from './Modal.svelte';
 	import { _ } from 'svelte-i18n';
 	import Logo from "./Logo.svelte";
 	export let active = false;
 	onMount(() => active = true);
 
-	const RE_LINKIFY = /%(.+?)%/g;
+	const links = [
+		{ key: 'github_star_plz_i_need_a_job_maybe', href: 'https://github.com/DeisDev/nwmpublisher' },
+		{ key: 'vscode_glua_enhanced', href: 'https://marketplace.visualstudio.com/items?itemName=venner.vscode-glua-enhanced' },
+	];
 
-	let star;
-	let gluaEnhanced;
-	onMount(() => {
-		star.innerText = $_('github_star_plz_i_need_a_job_maybe');
-		star.innerHTML = star.innerHTML.replace(RE_LINKIFY, (_, text) => {
-			return '<a class="color" href="https://github.com/DeisDev/nwmpublisher" target="_blank">' + text + '</a>';
-		});
+	async function openLink(event) {
+		const url = event.currentTarget.href;
+		try {
+			await open(url);
+		} catch (error) {
+			console.error('Failed to open link:', url, error);
+		}
+	}
 
-		gluaEnhanced.innerText = $_('vscode_glua_enhanced');
-		gluaEnhanced.innerHTML = gluaEnhanced.innerHTML.replace(RE_LINKIFY, (_, text) => {
-			return '<a class="color" href="https://marketplace.visualstudio.com/items?itemName=venner.vscode-glua-enhanced" target="_blank">' + text + '</a>';
-		});
-	});
-
-	function pissOff() {
+	function dismiss() {
 		active = false;
 	}
 </script>
 
-<Modal id="github-star-modal" {active} cancel={pissOff}>
+<Modal id="github-star-modal" {active} cancel={dismiss}>
 	<Logo/>
 	<h2>{$_('enjoying_nwmpublisher')}<img src="/img/dog.gif"/></h2>
-	<p><span bind:this={star}>{$_('github_star_plz_i_need_a_job_maybe')}</span><br><span bind:this={gluaEnhanced}>{$_('vscode_glua_enhanced')}</span></p>
-	<div class="btn" on:mousedown={pissOff} on:click={pissOff}>Piss off</div>
+	<p>
+		{#each links as link, index}
+			{#if index > 0}<br>{/if}
+			<span>{#each $_(link.key).split(/%(.+?)%/g) as part, partIndex}{#if partIndex % 2}<a class="color" href={link.href} on:click|preventDefault={openLink}>{part}</a>{:else}{part}{/if}{/each}</span>
+		{/each}
+	</p>
+	<button class="btn" type="button" on:click={dismiss}>{$_('done')}</button>
 </Modal>
 
 <style>
@@ -63,6 +67,10 @@
 		height: auto;
 	}
 	.btn {
+		width: 100%;
+		border: 0;
+		color: inherit;
+		font: inherit;
 		cursor: pointer;
 		background: #313131;
 		box-shadow: 0px 0px 2px 0px rgb(0 0 0 / 40%);

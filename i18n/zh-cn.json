@@ -253,8 +253,8 @@
 	"steam_workshop": "Steam 创意工坊",
 	"open_count": "您已经打开了 nwmpublisher {count} 次！恭喜！",
 	"enjoying_nwmpublisher": "喜欢 nwmpublisher 吗？",
-	"github_star_plz_i_need_a_job_maybe": "如果您有 GitHub 账户的话, 并且我的软件给您提供很大帮助的话, 考虑一下给 %GitHub repository% 点个星标吧 :D",
-	"vscode_glua_enhanced": "如果您是开发者的话, 您或许对我的 %VSCode GLua Enhanced% 扩展感兴趣。",
+	"github_star_plz_i_need_a_job_maybe": "觉得 nwmpublisher 有用？欢迎为 %GitHub 仓库%点个星标。",
+	"vscode_glua_enhanced": "在编写 GLua？不妨试试 Billy 开发的 %VSCode GLua Enhanced% 扩展。",
 
 	"copy_link": "复制链接",
 	"open_image": "打开图像",

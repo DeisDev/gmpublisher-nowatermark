@@ -252,8 +252,8 @@
 	"steam_workshop": "Steam Workshop",
 	"open_count": "¡Has abierto nwmpublisher {count} veces! ¡Felicidades!",
 	"enjoying_nwmpublisher": "¿Estás disfrutando nwmpublisher?",
-	"github_star_plz_i_need_a_job_maybe": "Si tú tienes una cuenta de GitHub, considera poniendo un estrella en el %Repositorio de GitHub% si mi trabajo te ayudó",
-	"vscode_glua_enhanced": "Si eres un desarrollador, a lo mejor estarás interesado en mí %VSCode GLua Enhanced% extensión.",
+	"github_star_plz_i_need_a_job_maybe": "¿Te resulta útil nwmpublisher? Considera dejar una estrella en el %repositorio de GitHub%.",
+	"vscode_glua_enhanced": "¿Escribes GLua? Echa un vistazo a la extensión %VSCode GLua Enhanced% de Billy.",
 
 	"copy_link": "Copiar link",
 	"open_image": "Abrir imagen",

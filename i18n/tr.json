@@ -253,8 +253,8 @@
 	"steam_workshop": "Steam Atölyesi",
 	"open_count": "nwmpublisher'ı {count} kere açtınız! Tebrikler!",
 	"enjoying_nwmpublisher": "nwmpublisher'ı sevdiniz mi?",
-	"github_star_plz_i_need_a_job_maybe": "Eğer nwmpublisher size yardımcı olduysa ve GitHub hesabınız varsa buraya %GitHub repository% yıldız bırakabilirsiniz :D",
-	"vscode_glua_enhanced": "Eğer geliştiriciyseniz, %VSCode GLua Enhanced% eklentim işinize yarayabilir.",
+	"github_star_plz_i_need_a_job_maybe": "nwmpublisher işinize yarıyor mu? %GitHub deposuna% yıldız bırakabilirsiniz.",
+	"vscode_glua_enhanced": "GLua mı yazıyorsunuz? Billy’nin %VSCode GLua Enhanced% eklentisine göz atın.",
 
 	"copy_link": "Bağlantıyı Kopyala",
 	"open_image": "Resmi Aç",

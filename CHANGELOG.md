@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Reworded the support popup to credit Billy for GLua Enhanced and use a neutral dismissal label.
 - **Renamed the app to `nwmpublisher`.** This covers the executable and installer, the window title,
   the CLI name, the `.gma` file association and MSI registry entries, the config, temp and log
   folders, and the WebSocket subprotocol.
@@ -42,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed the support popup's links to open in the default browser.
 - Fixed remaining Rust build warnings and updated Steam discovery and WebSocket dependencies to remove future-compatibility warnings.
 - Fixed MSI linking for the `.gma` icon, validation of optional features, and installer registry paths.
 - Load current settings before mounting the interface after an import, and show migration

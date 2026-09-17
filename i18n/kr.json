@@ -252,8 +252,8 @@
 	"steam_workshop": "스팀 창작마당",
 	"open_count": "축하드립니다! nwmpublisher를 {count}번 열었습니다!",
 	"enjoying_nwmpublisher": "nwmpublisher를 즐기셨나요?",
-	"github_star_plz_i_need_a_job_maybe": "깃허브 계정이 있으신가요, 만약 저의 작업이 도움이 되었다면 %GitHub repository% 에 별을 주시는 것을 고려하여 주십시요.",
-	"vscode_glua_enhanced": "만약 개발자라면, 저의 %VSCode GLua Enhanced% 확장에도 관심이 있으실겁니다.",
+	"github_star_plz_i_need_a_job_maybe": "nwmpublisher가 유용한가요? %GitHub 저장소%에 별을 남겨 주세요.",
+	"vscode_glua_enhanced": "GLua로 개발하시나요? Billy의 %VSCode GLua Enhanced% 확장을 확인해 보세요.",
 
 	"copy_link": "링크 복사",
 	"open_image": "이미지 열기",

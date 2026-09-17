@@ -253,8 +253,8 @@
 	"steam_workshop": "Мастерская Steam",
 	"open_count": "Вы открыли nwmpublisher {count} раз(а)! Поздравляем!",
 	"enjoying_nwmpublisher": "Нравится nwmpublisher?",
-	"github_star_plz_i_need_a_job_maybe": "Если у вас есть аккаунт на GitHub, то поставьте звёздочку на моём %репозитории на GitHub%, если моя работа помогла вам :D",
-	"vscode_glua_enhanced": "Если вы разработчик, вас также может заинтересовать моё расширение %VSCode GLua Enhanced%.",
+	"github_star_plz_i_need_a_job_maybe": "Считаете nwmpublisher полезным? Поставьте звёздочку в %репозитории GitHub%.",
+	"vscode_glua_enhanced": "Пишете на GLua? Попробуйте расширение %VSCode GLua Enhanced% от Billy.",
 
 	"copy_link": "Скопировать ссылку",
 	"open_image": "Открыть изображение",
