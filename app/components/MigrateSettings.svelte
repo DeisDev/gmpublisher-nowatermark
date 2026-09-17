@@ -4,24 +4,22 @@
 	import Modal from './Modal.svelte';
 
 	export let active = false;
+	let errorMessage = null;
 
 	function importSettings() {
-		invoke('migrate_legacy_settings').then(imported => {
-			if (!imported) {
-				active = false;
-				return;
-			}
-
+		errorMessage = null;
+		invoke('migrate_legacy_settings').then(() => {
 			// Every part of the UI reads the settings when it mounts, so restart the webview
 			// instead of trying to refresh them one by one
 			window.location.reload();
-		});
+		}).catch(error => errorMessage = String(error));
 	}
 
 	function startFresh() {
+		errorMessage = null;
 		invoke('dismiss_legacy_settings').then(() => {
 			active = false;
-		});
+		}).catch(error => errorMessage = String(error));
 	}
 
 	// Dismissing without choosing leaves the old settings alone, so the offer comes back
@@ -34,6 +32,9 @@
 <Modal id="migrate-settings" {active} cancel={dismiss}>
 	<h2>{$_('migrate_settings_title')}</h2>
 	<p>{$_('migrate_settings_body')}</p>
+	{#if errorMessage}
+		<p role="alert">{errorMessage}</p>
+	{/if}
 	<div class="buttons">
 		<div class="btn primary" on:click={importSettings}>{$_('migrate_settings_import')}</div>
 		<div class="btn" on:click={startFresh}>{$_('migrate_settings_fresh')}</div>

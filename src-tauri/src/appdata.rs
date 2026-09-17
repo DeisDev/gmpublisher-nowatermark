@@ -388,21 +388,16 @@ pub fn legacy_settings_pending() -> bool {
 }
 
 /// Imports the settings left behind by gmpublisher's config directory.
-/// Returns whether there was anything to import.
 #[tauri::command]
-pub fn migrate_legacy_settings() -> bool {
-	let settings = match Settings::load(&LEGACY_APP_SETTINGS_PATH, true) {
-		Ok(settings) => settings,
-		Err(_) => return false,
-	};
-
-	MIGRATION_RESOLVED.store(true, Ordering::Relaxed);
-
-	ignore! { settings.save() };
+pub fn migrate_legacy_settings() -> Result<(), String> {
+	let settings = Settings::load(&LEGACY_APP_SETTINGS_PATH, true)
+		.map_err(|error| format!("Failed to read gmpublisher settings: {}", error))?;
+	settings.save().map_err(|error| format!("Failed to save imported settings: {}", error))?;
 
 	let rediscover_addons = app_data!().settings.read().gmod != settings.gmod;
 
 	*app_data!().settings.write() = settings;
+	MIGRATION_RESOLVED.store(true, Ordering::Relaxed);
 
 	if rediscover_addons {
 		game_addons!().refresh();
@@ -411,15 +406,16 @@ pub fn migrate_legacy_settings() -> bool {
 
 	webview_emit!("UpdateAppData", &*crate::APP_DATA);
 
-	true
+	Ok(())
 }
 
 /// Keeps the settings nwmpublisher is currently using, writing them out so that
 /// the user isn't asked to migrate again on the next launch.
 #[tauri::command]
-pub fn dismiss_legacy_settings() {
+pub fn dismiss_legacy_settings() -> Result<(), String> {
+	app_data!().settings.read().save().map_err(|error| format!("Failed to save settings: {}", error))?;
 	MIGRATION_RESOLVED.store(true, Ordering::Relaxed);
-	ignore! { app_data!().settings.read().save() };
+	Ok(())
 }
 
 #[tauri::command]

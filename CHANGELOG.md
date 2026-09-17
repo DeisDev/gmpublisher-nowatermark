@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added an optional desktop shortcut to the Windows installer's feature selection.
 - On first launch, nwmpublisher detects the settings left behind by an older gmpublisher install
   and offers to import them (destinations, local addon paths and preferences). Declining writes out
   fresh settings so the offer isn't repeated.
@@ -41,6 +42,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed MSI linking for the `.gma` icon, validation of optional features, and installer registry paths.
+- Load current settings before mounting the interface after an import, and show migration
+  read or save failures without treating the migration as completed.
 - The gmpublisher settings prompt no longer comes back after importing. It used to reappear on the
   restart that follows the import and only went away once the app was closed and opened again.
 - Fixed MSI metadata, optional file associations, and shortcut registration.

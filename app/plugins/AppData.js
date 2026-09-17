@@ -1,4 +1,4 @@
-window.__NWMPUBLISHER__ = appDataCallback => {
+window.__NWMPUBLISHER__ = async appDataCallback => {
 	// TODO
 	/*{
 		__TAURI__.event.listen('tauri://file-drop', ({ payload: path }) => {
@@ -49,11 +49,10 @@ window.__NWMPUBLISHER__ = appDataCallback => {
 		}
 
 		updateAppData(JSON.parse('{$_APP_DATA_$}'));
-		__TAURI__.event.listen('UpdateAppData', ({ payload }) => updateAppData(payload));
+		await __TAURI__.event.listen('UpdateAppData', ({ payload }) => updateAppData(payload));
 
-		// After the listener is registered, so that the app data the backend sends back in
-		// response to a reload is not missed
-		__TAURI__.tauri.invoke('reloaded');
+		// Fetch current settings before mounting components that read them on startup.
+		updateAppData(await __TAURI__.tauri.invoke('reloaded'));
 	}
 };
 

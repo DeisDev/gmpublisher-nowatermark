@@ -181,12 +181,9 @@ pub fn warn(message: String) {
 
 static RELOADED: AtomicBool = AtomicBool::new(false);
 #[tauri::command]
-pub fn reloaded() {
+pub fn reloaded() -> &'static crate::appdata::AppData {
 	if RELOADED.fetch_or(true, std::sync::atomic::Ordering::SeqCst) {
 		crate::commands::free_caches();
-
-		// The webview was served the app data captured when it first loaded, so hand it
-		// the current data instead
-		app_data!().send();
 	}
+	&crate::APP_DATA
 }

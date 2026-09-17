@@ -49,10 +49,9 @@ __NWMPUBLISHER__(() => {
 	updateCustomColor('neutral', AppSettings.color_neutral);
 	updateCustomColor('success', AppSettings.color_success);
 	updateCustomColor('error', AppSettings.color_error);
+}).then(() => {
+	new App({ target: document.body });
+}).catch(error => {
+	console.error('Failed to initialize nwmpublisher:', error);
+	document.body.textContent = `Failed to load application settings: ${error}`;
 });
-
-var app = new App({
-	target: document.body
-});
-
-export default app;
