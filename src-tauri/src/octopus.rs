@@ -167,11 +167,11 @@ impl<V: Send + Sync + 'static> RelaxedRwLock<V> {
 		}
 	}
 
-	pub fn write_sync(&'static self) -> RwLockWriteGuard<'_, V> {
+	pub fn write_sync(&'static self) -> RwLockWriteGuard<'static, V> {
 		self.inner.write()
 	}
 
-	pub fn read_sync(&'static self) -> RwLockReadGuard<'_, V> {
+	pub fn read_sync(&'static self) -> RwLockReadGuard<'static, V> {
 		self.inner.read()
 	}
 }

@@ -42,6 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- Fixed remaining Rust build warnings and updated Steam discovery and WebSocket dependencies to remove future-compatibility warnings.
 - Fixed MSI linking for the `.gma` icon, validation of optional features, and installer registry paths.
 - Load current settings before mounting the interface after an import, and show migration
   read or save failures without treating the migration as completed.

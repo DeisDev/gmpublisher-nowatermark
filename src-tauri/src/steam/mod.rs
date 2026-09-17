@@ -5,8 +5,7 @@ use std::{
 };
 
 use steamworks::{
-	Callback, CallbackHandle, Client, ClientManager, PublishedFileId, SingleClient, SteamId, SteamServerConnectFailure, SteamServersConnected,
-	SteamServersDisconnected,
+	Callback, CallbackHandle, Client, ClientManager, PublishedFileId, SingleClient, SteamId, SteamServersConnected, SteamServersDisconnected,
 };
 
 use atomic_refcell::AtomicRefCell;
@@ -102,7 +101,7 @@ impl Steam {
 
 	fn watchdog() {
 		#[cfg(debug_assertions)]
-		std::mem::forget(steam!().register_callback(|c: SteamServerConnectFailure| {
+		std::mem::forget(steam!().register_callback(|c: steamworks::SteamServerConnectFailure| {
 			steam!().set_connected(false);
 			println!("[Steam] SteamServerConnectFailure {:#?}", c);
 		}));

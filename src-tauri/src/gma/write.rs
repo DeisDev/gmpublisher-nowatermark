@@ -2,7 +2,7 @@ use byteorder::{LittleEndian, WriteBytesExt};
 use lazy_static::lazy_static;
 use rayon::ThreadPool;
 use std::{
-	collections::{BTreeMap, BTreeSet, HashMap, LinkedList},
+	collections::BTreeMap,
 	fs::{self, File},
 	io::{BufWriter, Seek, Write},
 	path::Path,

@@ -249,23 +249,23 @@ impl AppData {
 
 		if !steam!().connected() {
 			println!("Steam is not connected, parsing Steam library folders...");
-			match steamlocate::SteamDir::locate().and_then(|mut steam_dir| steam_dir.app(&GMOD_APP_ID.0).map(|steam_app| steam_app.path.to_owned())) {
-				Some(path) => {
+			match steamlocate::locate().and_then(|steam_dir| steam_dir.find_app(GMOD_APP_ID.0)) {
+				Ok(Some((app, library))) => {
 					println!("Located!");
-					return Some(path);
+					return Some(library.resolve_app_dir(&app));
 				}
-				None => {
-					println!("Failed to parse Steam library folders. Waiting for Steam...");
-					for i in 0..3_u8 {
-						sleep!(1);
-						if steam!().connected() {
-							println!("Steam connected!");
-							break;
-						} else if i == 2 {
-							println!("Gave up.");
-							return None;
-						}
-					}
+				Ok(None) => println!("Garry's Mod was not found in Steam library folders."),
+				Err(error) => eprintln!("Failed to locate Garry's Mod in Steam library folders: {}", error),
+			}
+			println!("Waiting for Steam...");
+			for i in 0..3_u8 {
+				sleep!(1);
+				if steam!().connected() {
+					println!("Steam connected!");
+					break;
+				} else if i == 2 {
+					println!("Gave up.");
+					return None;
 				}
 			}
 		}

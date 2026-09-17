@@ -4,7 +4,7 @@ use crate::{
 };
 use image::{DynamicImage, GenericImageView, ImageError, ImageFormat};
 use parking_lot::Mutex;
-use path_slash::{PathBufExt, PathExt};
+use path_slash::PathExt;
 use std::{
 	fs::File,
 	io::BufReader,
