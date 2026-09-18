@@ -64,7 +64,7 @@
 	{/each}
 
 	<div id="credits" slot="footer">
-		<!--<img src="/img/logo.svg" alt="Logo" id="logo"/>--><Logo/><br>
+		<Logo/><br>
 		nwmpublisher v{AppData.version} by DeisDev "CatSniffer"<br>
 		<a tabindex="-1" href="https://github.com/DeisDev/nwmpublisher/stargazers" target="_blank">{$_('github_star')}</a>&nbsp;🤩
 	</div>

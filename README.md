@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="public/img/logo.svg" alt="nwmpublisher logo" width="128" height="128">
+</p>
+
 # ⚙️ nwmpublisher (no watermark publisher)
 
 A fork of [gmpublisher](https://github.com/WilliamVenner/gmpublisher) with the branding stripped out.

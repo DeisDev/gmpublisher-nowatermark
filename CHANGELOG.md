@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Use the new logo throughout the app, favicon, and packaged application icons.
+
 ## [3.0.0] - 2026-09-17
 
 ### Added
