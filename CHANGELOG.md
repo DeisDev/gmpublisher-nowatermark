@@ -11,6 +11,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Use the new logo throughout the app, favicon, and packaged application icons.
 
+### Fixed
+
+- Replaced the old logo in the Windows installer's header banner.
+
 ## [3.0.0] - 2026-09-17
 
 ### Added
