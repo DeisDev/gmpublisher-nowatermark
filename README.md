@@ -1,4 +1,4 @@
-# ⚙️ nwmpublisher
+# ⚙️ nwmpublisher (no watermark publisher)
 
 A fork of [gmpublisher](https://github.com/WilliamVenner/gmpublisher) with the branding stripped out.
 Underneath it's the same feature-packed Workshop publisher for Garry's Mod.

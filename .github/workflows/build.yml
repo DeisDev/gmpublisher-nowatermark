@@ -5,6 +5,9 @@ on:
     tags:
       - "*.*.*"
 
+permissions:
+  contents: write
+
 env:
   CARGO_TERM_COLOR: always
 
@@ -53,6 +56,8 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
+        body: |
+          See the [changelog for ${{ github.ref_name }}](${{ github.server_url }}/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md) for release notes.
         files: src-tauri/target/release/nwmpublisher_linux64.zip
         fail_on_unmatched_files: true
 
@@ -73,6 +78,8 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
+        body: |
+          See the [changelog for ${{ github.ref_name }}](${{ github.server_url }}/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md) for release notes.
         files: src-tauri/target/release/bundle/msi/nwmpublisher_*.msi
         fail_on_unmatched_files: true
 
@@ -109,5 +116,7 @@ jobs:
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
+        body: |
+          See the [changelog for ${{ github.ref_name }}](${{ github.server_url }}/${{ github.repository }}/blob/${{ github.ref_name }}/CHANGELOG.md) for release notes.
         files: src-tauri/target/universal-apple-darwin/release/bundle/macos/nwmpublisher_macOS.app.zip
         fail_on_unmatched_files: true
